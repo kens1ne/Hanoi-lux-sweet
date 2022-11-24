@@ -1,5 +1,5 @@
 <?php
-const DBNAME = "mvc";
+const DBNAME = "x_shop";
 const DBUSER = "root";
 const DBPASS = "";
 const DBCHARSET = "utf8";
@@ -70,16 +70,4 @@ function pdo_execute_get_id($query){
     return $lastId;
 }
 
-
-function pdo_execute($query){
-
-    $args = func_get_args();
-    $args = array_slice($args, 1);
-    
-    $conn = getConnect();
-    
-    $stmt = $conn->prepare($query);
-    $stmt->execute($args);
-   
-}
 ?>
