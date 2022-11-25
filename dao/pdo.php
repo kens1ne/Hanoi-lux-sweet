@@ -1,5 +1,5 @@
 <?php
-const DBNAME = "duan";
+const DBNAME = "duan_1_remake";
 const DBUSER = "root";
 const DBPASS = "";
 const DBCHARSET = "utf8";
@@ -20,7 +20,6 @@ function getConnect(){
 
 function pdo_query($sql){
     // select * from users where email = ? or role_id = ?
-
     $args = func_get_args();
     $args = array_slice($args, 1);
     
@@ -28,7 +27,7 @@ function pdo_query($sql){
     
     $stmt = $conn->prepare($sql);
     $stmt->execute($args);
-    $data = $stmt->fetchAll();
+    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     if(count($data) > 0){
         return $data;
     }
@@ -40,7 +39,6 @@ function pdo_query($sql){
 
 function pdo_query_one($sql){
     // select * from users where email = ? or role_id = ?
-
     $args = func_get_args();
     $args = array_slice($args, 1);
     
