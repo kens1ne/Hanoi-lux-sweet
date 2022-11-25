@@ -1,5 +1,5 @@
 <?php
-const DBNAME = "duan_1_remake";
+const DBNAME = "duan";
 const DBUSER = "root";
 const DBPASS = "";
 const DBCHARSET = "utf8";
