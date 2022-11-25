@@ -126,14 +126,23 @@
                     <span></span>
                 </div>
                 <div class="grid">
+                <?php foreach( $rooms as $data){
+                    $image = explode(",", $data['image']);
+                ?>
                     <div class="grid-column-4">
                         <div class="box-hover">
-                            <a href=""><img width="350" src="../public/img/rooms/room1.jpg" alt=""></a>
-                            <a href=""><img width="350" src="../public/img/rooms/room2.jpg" alt=""
-                                    class="img-change"></a>
+                            <?php
+                            foreach($image as $key => $element) {
+                                if ($key === array_key_first($image)){
+                                    echo '<a href=""><img width="350" src="'.$element.'" alt=""></a>';
+                                }else{
+                                    echo '<a href=""><img width="350" src="'.$element.'" alt="" class="img-change"></a>';
+                                }
+                            }
+                            ?>
                         </div>
                         <!-- <div class="point">9</div> -->
-                        <h3 class="product-title">Vuon Xuan Hotel</h3>
+                        <h3 class="product-title"><?=$data['name']?></h3>
                         <div class="star">
                             <div class="list-star">
                                 <i class="fa-solid fa-star"></i>
@@ -142,165 +151,14 @@
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
                             </div>
-                            <div class="location">Đà Lạt</div>
+                            <div class="location"><?=$data['address']?></div>
                         </div>
-                        <p class="description">Tọa lạc tại thành phố Đà Lạt, cách Hồ Xuân Hương 500 m, Dalat Wind là
-                            khách sạn 2 sao có lễ tân 24 giờ,...</p>
+                        <p class="description"><?=$data['description']?></p>
                         <div class="option-room">
-                            <h3>VIP room</h3>
-                            <p class="price">1.155.624 đ<span>/phòng</span></p>
+                            <p class="price"><?=number_format($data['price'])?><span>/phòng</span></p>
                         </div>
                     </div>
-                    <div class="grid-column-4">
-                        <div class="box-hover">
-                            <a href=""><img width="350" src="../public/img/rooms/room5.jpg" alt=""></a>
-                            <a href=""><img width="350" src="../public/img/rooms/room4.jpg" alt=""
-                                    class="img-change"></a>
-                        </div>
-                        <!-- <div class="point">9</div> -->
-                        <h3 class="product-title">Vuon Xuan Hotel</h3>
-                        <div class="star">
-                            <div class="list-star">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </div>
-                            <div class="location">Đà Lạt</div>
-                        </div>
-                        <p class="description">Tọa lạc tại thành phố Đà Lạt, cách Hồ Xuân Hương 500 m, Dalat Wind là
-                            khách sạn 2 sao có lễ tân 24 giờ,...</p>
-                        <div class="option-room">
-                            <h3>VIP room</h3>
-                            <p class="price">1.155.624 đ<span>/phòng</span></p>
-                        </div>
-                    </div>
-                    <div class="grid-column-4">
-                        <div class="box-hover">
-                            <a href=""><img width="350" src="../public/img/rooms/room6.jpg" alt=""></a>
-                            <a href=""><img width="350" src="../public/img/rooms/room7.jpg" alt=""
-                                    class="img-change"></a>
-                        </div>
-                        <!-- <div class="point">9</div> -->
-                        <h3 class="product-title">Vuon Xuan Hotel</h3>
-                        <div class="star">
-                            <div class="list-star">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </div>
-                            <div class="location">Đà Lạt</div>
-                        </div>
-                        <p class="description">Tọa lạc tại thành phố Đà Lạt, cách Hồ Xuân Hương 500 m, Dalat Wind là
-                            khách sạn 2 sao có lễ tân 24 giờ,...</p>
-                        <div class="option-room">
-                            <h3>VIP room</h3>
-                            <p class="price">1.155.624 đ<span>/phòng</span></p>
-                        </div>
-                    </div>
-                    <div class="grid-column-4">
-                        <div class="box-hover">
-                            <a href=""><img width="350" src="../public/img/rooms/room8.jpg" alt=""></a>
-                            <a href=""><img width="350" src="../public/img/rooms/room9.jpg" alt=""
-                                    class="img-change"></a>
-                        </div>
-                        <!-- <div class="point">9</div> -->
-                        <h3 class="product-title">Vuon Xuan Hotel</h3>
-                        <div class="star">
-                            <div class="list-star">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </div>
-                            <div class="location">Đà Lạt</div>
-                        </div>
-                        <p class="description">Tọa lạc tại thành phố Đà Lạt, cách Hồ Xuân Hương 500 m, Dalat Wind là
-                            khách sạn 2 sao có lễ tân 24 giờ,...</p>
-                        <div class="option-room">
-                            <h3>VIP room</h3>
-                            <p class="price">1.155.624 đ<span>/phòng</span></p>
-                        </div>
-                    </div>
-                    <div class="grid-column-4">
-                        <div class="box-hover">
-                            <a href=""><img width="350" src="../public/img/rooms/room10.jpg" alt=""></a>
-                            <a href=""><img width="350" src="../public/img/rooms/room.jpg" alt=""
-                                    class="img-change"></a>
-                        </div>
-                        <!-- <div class="point">9</div> -->
-                        <h3 class="product-title">Vuon Xuan Hotel</h3>
-                        <div class="star">
-                            <div class="list-star">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </div>
-                            <div class="location">Đà Lạt</div>
-                        </div>
-                        <p class="description">Tọa lạc tại thành phố Đà Lạt, cách Hồ Xuân Hương 500 m, Dalat Wind là
-                            khách sạn 2 sao có lễ tân 24 giờ,...</p>
-                        <div class="option-room">
-                            <h3>VIP room</h3>
-                            <p class="price">1.155.624 đ<span>/phòng</span></p>
-                        </div>
-                    </div>
-                    <div class="grid-column-4">
-                        <div class="box-hover">
-                            <a href=""><img width="350" src="../public/img/rooms/room1.jpg" alt=""></a>
-                            <a href=""><img width="350" src="../public/img/rooms/room2.jpg" alt=""
-                                    class="img-change"></a>
-                        </div>
-                        <!-- <div class="point">9</div> -->
-                        <h3 class="product-title">Vuon Xuan Hotel</h3>
-                        <div class="star">
-                            <div class="list-star">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </div>
-                            <div class="location">Đà Lạt</div>
-                        </div>
-                        <p class="description">Tọa lạc tại thành phố Đà Lạt, cách Hồ Xuân Hương 500 m, Dalat Wind là
-                            khách sạn 2 sao có lễ tân 24 giờ,...</p>
-                        <div class="option-room">
-                            <h3>VIP room</h3>
-                            <p class="price">1.155.624 đ<span>/phòng</span></p>
-                        </div>
-                    </div>
-                    <div class="grid-column-4">
-                        <div class="box-hover">
-                            <a href=""><img width="350" src="../public/img/rooms/room1.jpg" alt=""></a>
-                            <a href=""><img width="350" src="../public/img/rooms/room2.jpg" alt=""
-                                    class="img-change"></a>
-                        </div>
-                        <!-- <div class="point">9</div> -->
-                        <h3 class="product-title">Vuon Xuan Hotel</h3>
-                        <div class="star">
-                            <div class="list-star">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </div>
-                            <div class="location">Đà Lạt</div>
-                        </div>
-                        <p class="description">Tọa lạc tại thành phố Đà Lạt, cách Hồ Xuân Hương 500 m, Dalat Wind là
-                            khách sạn 2 sao có lễ tân 24 giờ,...</p>
-                        <div class="option-room">
-                            <h3>VIP room</h3>
-                            <p class="price">1.155.624 đ<span>/phòng</span></p>
-                        </div>
-                    </div>
+                <?php }?>
                 </div>
             </div>
         </div>
