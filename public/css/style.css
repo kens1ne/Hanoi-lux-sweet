@@ -27,7 +27,7 @@ a {
     left: 0;
     right: 0;
     padding: 0 50px;
-    z-index: 1;
+    z-index: 99999999;
 }
 
 .menu {
@@ -807,6 +807,9 @@ input::placeholder {
 }
 .w-full {
     width: 100%;
+}
+.img-room {
+    padding-right: 20px;
 }
 .title-detail {
     width: 100%;

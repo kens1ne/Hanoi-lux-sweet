@@ -15,7 +15,7 @@
         </div>
         <div class="main-detail">
             <div class="detail-left">
-                <div class="owl-carousel owl-theme">
+                <div class="owl-carousel owl-theme img-room">
                     <?php
                             foreach($room_image as $key => $element) {
                                 echo '<div class="">';
