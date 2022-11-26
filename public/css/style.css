@@ -805,10 +805,11 @@ input::placeholder {
     margin: 0 auto;
     padding: 70px 0;
 }
-
+.w-full {
+    width: 100%;
+}
 .title-detail {
-    position: absolute;
-    width: 78%;
+    width: 100%;
     top: 99.0%;
     background-color: #fff;
     display: flex;

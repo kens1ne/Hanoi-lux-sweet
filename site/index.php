@@ -9,7 +9,11 @@
     }elseif(isset($_GET['action'])){
         switch ($_GET['action']) {
             case 'detail':
-                $VIEW_NAME = 'chi-tiet.php';
+                require_once '../dao/room_dao.php';
+                $id_room = $_GET['id'];
+                $info = room_info($id_room);
+                $room_image = room_image($id_room);
+                $VIEW_NAME = 'detail.php';
             break;
             case 'search':
                 if(empty($_GET['start_date']) || empty($_GET['end_date']) || empty($_GET['quantity'])){
