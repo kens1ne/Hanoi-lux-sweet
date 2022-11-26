@@ -1,27 +1,3 @@
-<body>
-    <div id="container">
-        <!-- Header -->
-        <header>
-            <div class="header">
-                <ul class="menu">
-                    <li><a href="#" class="nav-link px-4 fs-5 ">Home</a></li>
-                    <li><a href="#" class="nav-link px-4 fs-5 ">About</a></li>
-                    <li><a href="#" class="nav-link px-4 fs-5 ">Offers</a></li>
-                    <li><a href="#" class="nav-link px-4 fs-5 ">Service</a></li>
-                </ul>
-                <div class="logo">
-                    <a href="/" class="">
-                        <img width="150" src="../public/img/logo.png" alt="">
-                    </a>
-                </div>
-                <ul class="menu">
-                    <li><a href="#" class="nav-link px-4 fs-5 ">News</a></li>
-                    <li><a href="#" class="nav-link px-4 fs-5 ">Contact</a></li>
-                    <li><button type="button" class="btn fs-5">Login</button></li>
-                    <li><button type="button" class="btn fs-5">Sign-up</button></li>
-                </ul>
-            </div>
-        </header>
         <!-- Banner -->
         <section>
             <div class="background position-relative">
@@ -40,39 +16,29 @@
         </section>
         <!-- Booking -->
         <div class="search-container">
-            <div class="booking">
+            <form action="index.php" method="GET" class="booking">
+                <input type="hidden" name="action" value="search" />
+                <h3>Đặt khách sạn tại Hà Nội :</h3>
                 <div class="search-item">
-                    <span>Phòng muốn đặt</span>
-                    <input type="text" placeholder="Nhập số phòng">
+                    <span>Nhận Phòng (Check-in)</span>
+                    <input type="date" placeholder="Nhập số phòng" name="start_date">
                 </div>
                 <div class="search-item">
-                    <span>Check-in</span>
-                    <input type="date" placeholder="Nhập số phòng">
+                    <span>Trả Phòng (Check-out)</span>
+                    <input type="date" placeholder="Nhập số phòng" name="end_date">
                 </div>
                 <div class="search-item">
-                    <span>Check-out</span>
-                    <input type="date" placeholder="Nhập số phòng">
-                </div>
-                <div class="search-item">
-                    <span>Người lớn</span>
+                    <span>Số người (People quantity)</span>
                     <div class="buttons_added">
                         <input class="minus is-form" type="button" value="-">
-                        <input aria-label="quantity" class="input-qty" max="10" min="1" name="" type="number" value="1">
+                        <input class="input-qty" max="10" min="1" type="number" value="1" name="quantity">
                         <input class="plus is-form" type="button" value="+">
                     </div>
                 </div>
                 <div class="search-item">
-                    <span class="text-red">Bọn trẻ</span>
-                    <div class="buttons_added">
-                        <input class="minus is-form" type="button" value="-">
-                        <input aria-label="quantity" class="input-qty" max="10" min="1" name="" type="number" value="1">
-                        <input class="plus is-form" type="button" value="+">
-                    </div>
+                    <button type="submit">Search</button>
                 </div>
-                <div class="search-item">
-                    <button>Search</button>
-                </div>
-            </div>
+            </form>
         </div>
         <!-- Content -->
         <div class="content">
@@ -126,7 +92,7 @@
                     <span></span>
                 </div>
                 <div class="grid">
-                <?php foreach( $rooms as $data){
+                    <?php foreach( $rooms as $data){
                     $image = explode(",", $data['image']);
                 ?>
                     <div class="grid-column-4">
@@ -134,9 +100,9 @@
                             <?php
                             foreach($image as $key => $element) {
                                 if ($key === array_key_first($image)){
-                                    echo '<a href=""><img width="350" src="'.$element.'" alt=""></a>';
+                                    echo '<a href=""><img src="'.$element.'" alt=""></a>';
                                 }else{
-                                    echo '<a href=""><img width="350" src="'.$element.'" alt="" class="img-change"></a>';
+                                    echo '<a href=""><img src="'.$element.'" alt="" class="img-change"></a>';
                                 }
                             }
                             ?>
@@ -158,14 +124,7 @@
                             <p class="price"><?=number_format($data['price'])?><span>/phòng</span></p>
                         </div>
                     </div>
-                <?php }?>
+                    <?php }?>
                 </div>
             </div>
         </div>
-        <div class="footer"></div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.js"
-        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script src="../public/js/style.js"></script>
-</body>
