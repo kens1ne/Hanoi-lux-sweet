@@ -100,9 +100,9 @@
                             <?php
                             foreach($image as $key => $element) {
                                 if ($key === array_key_first($image)){
-                                    echo '<a href=""><img src="'.$element.'" alt=""></a>';
+                                    echo '<a href="index.php?action=detail&id='.$data['id'].'"><img src="'.$element.'" alt=""></a>';
                                 }else{
-                                    echo '<a href=""><img src="'.$element.'" alt="" class="img-change"></a>';
+                                    echo '<a href=" index.php?action=detail&id='.$data['id'].'"><img src="'.$element.'" alt="" class="img-change"></a>';
                                 }
                             }
                             ?>
