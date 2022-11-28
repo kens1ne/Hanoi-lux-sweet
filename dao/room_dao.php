@@ -19,5 +19,15 @@ function room_search($start, $end, $quantity, $location = null){
     return pdo_query($room);
 }
 
+function room_info($id) {
+    $query = "SELECT * FROM `rooms` WHERE `id` = $id";
+    return pdo_query_one($query);
+}
+
+function room_image($id){
+    $query = "SELECT * FROM `storage_room` WHERE `id_room` = $id";
+    return pdo_query($query);
+}
+
 
 ?>
