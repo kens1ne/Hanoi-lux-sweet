@@ -1,7 +1,8 @@
 <?php
+    session_start();
     require_once '../global.php';
     require_once '../dao/pdo.php';
-    
+    require_once '../dao/user.php';
     if(empty($_GET['action'])) {
         require_once '../dao/room_dao.php';
         $rooms = rooms_list();
@@ -31,7 +32,37 @@
                     }
                     $VIEW_NAME = 'search.php';
                 }
-            break;             
+            break;
+
+            case 'register': 
+                if(isset($_POST['register']) && ($_POST['register'])) {
+                    $name = $_POST['name'];
+                    $user = $_POST['user'];
+                    $pass = $_POST['pass'];
+                    insert_user($name, $user, $pass);
+                    $thongbao = "Đăng ký thành công!";
+                }
+                $VIEW_NAME = './user/register.php';
+                break;
+            case 'login': 
+                if(isset($_POST['login']) && ($_POST['login'])) {
+                    $user = $_POST['user'];
+                    $pass = $_POST['pass'];
+                    $check_user=check_user($user, $pass);
+                    if(is_array($check_user)) {
+                        $_SESSION['user']=$check_user;
+                        $thongbao = "Đăng đăng nhập thành công!";
+                        header('location: index.php');
+                    } else {
+                        $thongbao= "Tài khoản không tồn tại!";
+                    }
+                }
+                $VIEW_NAME = './user/login.php';
+                break;
+            case 'out':
+                session_unset();
+                header('location: index.php');
+                break;
         }
     }
 

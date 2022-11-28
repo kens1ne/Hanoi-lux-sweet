@@ -17,7 +17,7 @@
                 <ul class="menu">
                     <li><a href="#" class="nav-link px-4 fs-5 ">News</a></li>
                     <li><a href="#" class="nav-link px-4 fs-5 ">Contact</a></li>
-                    <li><button type="button" class="btn fs-5">Login</button></li>
+                    <li><button type="button" class="btn fs-5"><a href="index.php?action=login">Login</a></button></li>
                     <li><button type="button" class="btn fs-5">Sign-up</button></li>
                 </ul>
             </div>
