@@ -263,7 +263,7 @@ a {
 
 /* Content */
 .content {
-    padding-top: 100px;
+    padding: 100px 0    ;
     background-color: #fdfaf0;
 }
 
