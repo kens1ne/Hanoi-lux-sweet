@@ -1,5 +1,5 @@
 <?php
-const DBNAME = "x_shop";
+const DBNAME = "duan";
 const DBUSER = "root";
 const DBPASS = "";
 const DBCHARSET = "utf8";
@@ -18,17 +18,16 @@ function getConnect(){
 
 
 
-function pdo_query_all($query){
+function pdo_query($sql){
     // select * from users where email = ? or role_id = ?
-
     $args = func_get_args();
     $args = array_slice($args, 1);
     
     $conn = getConnect();
     
-    $stmt = $conn->prepare($query);
+    $stmt = $conn->prepare($sql);
     $stmt->execute($args);
-    $data = $stmt->fetchAll();
+    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     if(count($data) > 0){
         return $data;
     }
@@ -38,15 +37,14 @@ function pdo_query_all($query){
 }
 
 
-function pdo_query_one($query){
+function pdo_query_one($sql){
     // select * from users where email = ? or role_id = ?
-
     $args = func_get_args();
     $args = array_slice($args, 1);
     
     $conn = getConnect();
     
-    $stmt = $conn->prepare($query);
+    $stmt = $conn->prepare($sql);
     $stmt->execute($args);
     $data = $stmt->fetch();
     if(count($data) > 0){
@@ -57,14 +55,14 @@ function pdo_query_one($query){
 }
 
 
-function pdo_execute_get_id($query){
+function pdo_execute($sql){
 
     $args = func_get_args();
     $args = array_slice($args, 1);
     
     $conn = getConnect();
     
-    $stmt = $conn->prepare($query);
+    $stmt = $conn->prepare($sql);
     $stmt->execute($args);
     $lastId =  $conn->lastInsertId();
     return $lastId;

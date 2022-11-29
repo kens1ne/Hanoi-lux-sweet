@@ -52,3 +52,10 @@ function zoom(image) {
   let src = image.src;
   document.getElementById("fame").style.backgroundImage = "url(" + src + ")";
 }
+$(".owl-carousel").owlCarousel({
+  loop: true,
+  autoplay: true,
+  autoplayTimeout: 5000,
+  autoWidth: false,
+  items: 1,
+});
