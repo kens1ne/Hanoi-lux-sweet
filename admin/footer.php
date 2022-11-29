@@ -2,7 +2,7 @@
       <p><b>Copyright
           <script type="text/javascript">
             document.write(new Date().getFullYear());
-          </script> Phần mềm quản lý bán hàng | Dev By X-Shop
+          </script> Phần mềm quản lý đặt phòng khách sạn | Dev By Levart
         </b></p>
     </div>
   </main>

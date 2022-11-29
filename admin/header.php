@@ -175,7 +175,7 @@
             <li><a class="app-menu__item" href="index.php?act=dsbl"><i class='app-menu__icon bx bx-run'></i><span
                         class="app-menu__label">Quản lý Bình Luận</span></a></li>
 
-            <li><a class="app-menu__item" href="index.php?act=dsbl"><i class='app-menu__icon bx bx-run'></i><span
+            <li><a class="app-menu__item" href="index.php?act=list_user"><i class='app-menu__icon bx bx-run'></i><span
                         class="app-menu__label">Quản lý Người Dùng</span></a></li>
 
             <li><a class="app-menu__item" href="index.php?act=dsbl"><i class='app-menu__icon bx bx-run'></i><span
