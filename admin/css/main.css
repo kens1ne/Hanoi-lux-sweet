@@ -3203,6 +3203,9 @@ border: none !important;
   padding-right: 10px;
   font-weight: 500;
 }
+.btn-pink{
+  background-color: #efcaca  !important
+}
 .pdf-file{
   background: #efcaca  !important;
   color: #bf0000  !important;

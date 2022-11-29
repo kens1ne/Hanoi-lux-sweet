@@ -43,7 +43,7 @@ function pdo_query_one($sql){
     
     $stmt = $conn->prepare($sql);
     $stmt->execute($args);
-    $data = $stmt->fetch();
+    $data = $stmt->fetch(PDO::FETCH_ASSOC);
     if(count($data) > 0){
         return $data;
     }
