@@ -15,9 +15,6 @@ function getConnect(){
             );
     return $connect;
 }
-
-
-
 function pdo_query($sql){
     // select * from users where email = ? or role_id = ?
     $args = func_get_args();
@@ -46,7 +43,7 @@ function pdo_query_one($sql){
     
     $stmt = $conn->prepare($sql);
     $stmt->execute($args);
-    $data = $stmt->fetch();
+    $data = $stmt->fetch(PDO::FETCH_ASSOC);
     if(count($data) > 0){
         return $data;
     }
@@ -67,5 +64,4 @@ function pdo_execute($sql){
     $lastId =  $conn->lastInsertId();
     return $lastId;
 }
-
 ?>
