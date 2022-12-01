@@ -2,6 +2,8 @@
 include "header.php";
 include "../dao/pdo.php";
 include "../dao/category.php";
+include "../dao/room_dao.php";
+include "../dao/booking.php";
 include "../dao/thongke.php";
 include "../dao/user.php";
 if (isset($_GET['act'])) {
@@ -53,32 +55,65 @@ if (isset($_GET['act'])) {
             include "category/list.php";
             break;
         //--- Phần Quản lí phòng------//
-        // case 'addroom':
-        //     if (isset($_POST['themmoi'])) {
-        //         $id_cate = $_POST['id_cate'];
-        //         $name = $_POST['name'];
-        //         $price = $_POST['price'];
-        //         $description = $_POST['description'];
-        //         $quantity_people = $_POST['quantity_people'];
-        //         $status = $_POST['status'];
-        //         insert_rooms($name, $price, $description, $quantity_people, $status, $id_cate);
-        //     }
-        //     $listcate = loadall();
-        //     include "rooms/add.php";
-        //     break;
-        // //list rooms
-        // case 'listroom':
-        //     $listrooms = loadAll_rooms();
-        //     include "rooms/list.php";
-        //     break;
-        // // xóa hàng hóa
-        // case 'xoaroom':
+        case 'addroom':
+            if (isset($_POST['themmoi'])) {
+                $id_cate = $_POST['id_cate'];
+                $name = $_POST['name'];
+                $price = $_POST['price'];
+                $description = $_POST['description'];
+                $address = $_POST['address'];
+                $quantity_people = $_POST['quantity_people'];
+                $status = $_POST['status'];
+                insert_rooms($name, $price, $description,$address, $quantity_people, $status, $id_cate);
+                $thongbao = "Thêm thành công";
+            }
+            $listcate = loadall();
+            include "rooms/add.php";
+            break;
+        //list rooms
+        case 'listroom':
+            $listrooms = loadAll_rooms();
+            include "rooms/list.php";
+            break;
+        // xóa phòng
+        case 'xoaroom':
             if (isset($_GET['id']) && ($_GET['id'] >= 0)) {
                 delete_rooms($_GET['id']); // hàm xóa hàng hóa
             }
             $listrooms = loadAll_rooms("",0);
+            $thongbao = "Xóa thành công";
             include "rooms/list.php";
             break;
+        //Sửa phòng
+        case 'suaroom':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $room = loadOne_rooms($_GET['id']); // hàm load 1 sản phẩm trong ds hàng hóa
+            }
+            $listrooms = loadAll_rooms();
+            include "rooms/update.php";
+            break;  
+        case 'updateroom':
+            if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                $id= $_POST['id'];
+                $id_cate = $_POST['id_cate'];
+                $name = $_POST['name'];
+                $price = $_POST['price'];
+                $description = $_POST['description'];
+                $address = $_POST['address'];
+                $quantity_people = $_POST['quantity_people'];
+                $status = $_POST['status'];
+                update_rooms($id,$name, $price, $description,$address, $quantity_people, $status, $id_cate);
+                $thongbao = "Cập nhật thành công";
+            }  
+            $listcate = loadall();  
+            $listrooms = loadAll_rooms();
+            include "rooms/list.php";
+            break; 
+            //--- Phần Quản lí Đặt phòng (Booking)------//  
+        case 'listbooking':
+            $listbooking = loadAll_booking();
+            include "booking/list.php";
+            break;   
         //--------------------Khách hàng----------------------//
             case 'add_user':
                 //kiểm tra xem người dùng có click vào nút add hay không
