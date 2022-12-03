@@ -37,9 +37,11 @@
             case 'register': 
                 if(isset($_POST['register']) && ($_POST['register'])) {
                     $name = $_POST['name'];
-                    $user = $_POST['user'];
-                    $pass = $_POST['pass'];
-                    insert_user($name, $user, $pass);
+                    $user = $_POST['username'];
+                    $phone = $_POST['phone'];
+                    $email = $_POST['email'];
+                    $pass = $_POST['password'];
+                    insert_user($name, $user, $phone, $email, $pass);
                     $thongbao = "Đăng ký thành công!";
                 }
                 $VIEW_NAME = './user/register.php';
