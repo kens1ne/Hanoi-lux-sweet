@@ -1,5 +1,5 @@
 <style>
-.table-order {
+/* .table-order {
     margin-top: 20px;
 
     font-family: Arial, Helvetica;
@@ -34,22 +34,26 @@ tr:hover {
 .first-column {
     background-color: #c19b76;
     color: #fff;
+} */
+.color{
+    color:black;
 }
 </style>
 <div class="content my-5">
     <div class="container">
-        <table>
-
-            <tr class="first-column">
-                <th>ID</th>
-                <th>Phone</th>
-                <th>Name Booking</th>
-                <th>Room Name</th>
-                <th>Checkin</th>
-                <th>Checkout</th>
-                <th>Total Price</th>
-            </tr>
-            <?php foreach( $booking as $data){  ?>
+    <table id="table_id" class="display">
+    <thead>
+        <tr class="first-column">
+                    <th>ID</th>
+                    <th>Phone</th>
+                    <th>Name Booking</th>
+                    <th>Room Name</th>
+                    <th>Checkin</th>
+                    <th>Checkout</th>
+                    <th>Total Price</th>
+                </tr>
+    <tbody class="color">
+        <?php foreach( $booking as $data){  ?>
 
             <tr>
                 <td><?=$data['id']?></td>
@@ -62,8 +66,9 @@ tr:hover {
 
             </tr>
             <?php }?>
+    </tbody>
+</table>
 
-
-        </table>
+        </div>
     </div>
 </div>
