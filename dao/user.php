@@ -44,7 +44,12 @@ function loadone_user($id)
     return $user;
 }
 //------------------------------------------------
+function check_user($user, $pass) {
+    $sql =  "select * from user where username='" . $user . "' and password='" . $pass . "'";
+    $user = pdo_query_one($sql);
+    return $user;
 
+}
 
 
 //------------------------------------------------
