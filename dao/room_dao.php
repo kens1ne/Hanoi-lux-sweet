@@ -40,41 +40,8 @@ function insert_booking_detail($id_booking, $id_room, $id_user, $start_date, $en
     VALUES ('$id_booking', '$id_room', '$id_user', '$start_date', '$end_date', 1)";
     return pdo_execute($sql);
 }
-// hàm thêm mới phòng vào bảng loại phòng trong databasse
-function insert_rooms($name, $price, $description,$address, $quantity_people, $status, $id_cate)
-{
-    $sql = "insert into rooms(name, price, description,address, quantity_people, status, id_cate) 
-    value('$name', '$price', '$description','$address', '$quantity_people', '$status', '$id_cate')";
-    pdo_execute($sql);
-}
-// hàm xóa 
-function delete_rooms($id)
-{
-    $sql = "delete from rooms where id=" . $id;
-    pdo_execute($sql);
-}
-// hàm loadall
-function loadAll_rooms($id= 0)
-{        
-    $sql = "select * from rooms where 1";
-    if ($id > 0) {
-        $sql .= " and id='" . $id. "'";
-    }
-    $listrooms = pdo_query($sql);
-    return $listrooms;
-}
-// hàm load một sản phẩm trong danh sách phòng trong database
-function loadOne_rooms($id)
-{
-    $sql = "select * from rooms where id=" . $id;
-    $room = pdo_query_one($sql);
-    return $room;
-}
-// hàm update một sản phẩm trong danh sách hàng hóa trong database
-function  update_rooms($id,$name, $price, $description,$address, $quantity_people, $status, $id_cate)
-{    
-    $sql = "update rooms set name='" . $name . "', price='" . $price . "', description='" . $description . "', address='" . $address . "', quantity_people='" . $quantity_people . "', status='" . $status . "', id_cate='" . $id_cate . "' where id=" . $id;
-
-    pdo_execute($sql);
+function booking_history($id){
+    $query = "SELECT * from booking_detail INNER JOIN booking ON booking.id = booking_detail.id_booking INNER JOIN rooms ON booking_detail.id_room = rooms.id WHERE booking_detail.id_user = $id";
+    return pdo_query($query);
 }
 ?>
