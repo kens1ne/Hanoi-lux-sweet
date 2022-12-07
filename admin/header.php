@@ -150,7 +150,7 @@
         <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="../img/login/anh.jpg" width="50px"
                 alt="User Image">
             <div>
-                <p class="app-sidebar__user-name"><b>Trung Anh</b></p>
+                <p class="app-sidebar__user-name"><b>Admin</b></p>
                 <p class="app-sidebar__user-designation">Chào mừng bạn trở lại</p>
             </div>
         </div>
@@ -168,14 +168,14 @@
                         Phòng</span></a>
             </li>
 
-            <li><a class="app-menu__item" href="index.php?act=addkh"><i
+            <li><a class="app-menu__item" href="index.php?act=listbooking"><i
                         class='app-menu__icon bx bx-user-voice'></i><span class="app-menu__label">Quản Lý Đặt
                         Phòng</span></a></li>
 
-            <li><a class="app-menu__item" href="index.php?act=dsbl"><i class='app-menu__icon bx bx-run'></i><span
-                        class="app-menu__label">Quản lý Bình Luận</span></a></li>
+            <!-- <li><a class="app-menu__item" href="index.php?act=dsbl"><i class='app-menu__icon bx bx-run'></i><span
+                        class="app-menu__label">Quản lý Bình Luận</span></a></li> -->
 
-            <li><a class="app-menu__item" href="index.php?act=dsbl"><i class='app-menu__icon bx bx-run'></i><span
+            <li><a class="app-menu__item" href="index.php?act=list_user"><i class='app-menu__icon bx bx-run'></i><span
                         class="app-menu__label">Quản lý Người Dùng</span></a></li>
 
             <li><a class="app-menu__item" href="index.php?act=dsbl"><i class='app-menu__icon bx bx-run'></i><span

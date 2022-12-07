@@ -20,8 +20,9 @@ function room_search($start, $end, $quantity, $location = null){
 }
 
 function room_info($id) {
-    $query = "SELECT * FROM `rooms` WHERE `id` = $id";
-    return pdo_query_one($query);
+    $room = "SELECT rooms.*, GROUP_CONCAT(service_list.name) AS service_list , SUM(service_list.price) AS service_price
+    FROM rooms INNER JOIN service ON rooms.id = service.id_room JOIN service_list ON service.id_service = service_list.id WHERE rooms.id = $id GROUP BY service.id_room";
+    return pdo_query_one($room);
 }
 
 function room_image($id){
@@ -29,5 +30,51 @@ function room_image($id){
     return pdo_query($query);
 }
 
+function room_booking($name, $phone, $price, $start_date, $end_date){
+    $sql = "INSERT INTO `booking`(`name_booking`, `phone`, `total_price`, `check_in`, `check_out`, `status`) 
+    VALUES ('$name', '$phone', '$price', '$start_date', '$end_date', 1)";
+    return pdo_execute($sql);
+}
+function insert_booking_detail($id_booking, $id_room, $id_user, $start_date, $end_date){
+    $sql = "INSERT INTO `booking_detail`(`id_booking`, `id_room`, `id_user`, `start_date`, `end_date`, `status`) 
+    VALUES ('$id_booking', '$id_room', '$id_user', '$start_date', '$end_date', 1)";
+    return pdo_execute($sql);
+}
+// hàm thêm mới phòng vào bảng loại phòng trong databasse
+function insert_rooms($name, $price, $description,$address, $quantity_people, $status, $id_cate)
+{
+    $sql = "insert into rooms(name, price, description,address, quantity_people, status, id_cate) 
+    value('$name', '$price', '$description','$address', '$quantity_people', '$status', '$id_cate')";
+    pdo_execute($sql);
+}
+// hàm xóa 
+function delete_rooms($id)
+{
+    $sql = "delete from rooms where id=" . $id;
+    pdo_execute($sql);
+}
+// hàm loadall
+function loadAll_rooms($id= 0)
+{        
+    $sql = "select * from rooms where 1";
+    if ($id > 0) {
+        $sql .= " and id='" . $id. "'";
+    }
+    $listrooms = pdo_query($sql);
+    return $listrooms;
+}
+// hàm load một sản phẩm trong danh sách phòng trong database
+function loadOne_rooms($id)
+{
+    $sql = "select * from rooms where id=" . $id;
+    $room = pdo_query_one($sql);
+    return $room;
+}
+// hàm update một sản phẩm trong danh sách hàng hóa trong database
+function  update_rooms($id,$name, $price, $description,$address, $quantity_people, $status, $id_cate)
+{    
+    $sql = "update rooms set name='" . $name . "', price='" . $price . "', description='" . $description . "', address='" . $address . "', quantity_people='" . $quantity_people . "', status='" . $status . "', id_cate='" . $id_cate . "' where id=" . $id;
 
+    pdo_execute($sql);
+}
 ?>

@@ -17,8 +17,13 @@
                 <ul class="menu">
                     <li><a href="#" class="nav-link px-4 fs-5 ">News</a></li>
                     <li><a href="#" class="nav-link px-4 fs-5 ">Contact</a></li>
-                    <li><button type="button" class="btn fs-5"><a href="index.php?action=login">Login</a></button></li>
-                    <li><button type="button" class="btn fs-5">Sign-up</button></li>
+                    <?php if(empty($_SESSION['user'])){?>
+                    <li><a href="index.php?action=login" class="nav-link px-4 fs-5 ">Sign In</a></li>
+                    <li><a href="index.php?action=register" class="nav-link px-4 fs-5 ">Sign Up</a></li>
+                    <?php } else{?>
+                    <li><a href="index.php?action=profile"
+                            class="nav-link px-4 fs-5 "><?=$_SESSION['user']['name'];?></a></li>
+                    <?php } ?>
                 </ul>
             </div>
         </header>

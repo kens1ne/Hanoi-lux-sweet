@@ -14,8 +14,9 @@
                 $id_room = $_GET['id'];
                 $info = room_info($id_room);
                 $room_image = room_image($id_room);
+                $services = explode(",", $info['service_list']);
                 $VIEW_NAME = 'detail.php';
-            break;
+            break;  
             case 'search':
                 if(empty($_GET['start_date']) || empty($_GET['end_date']) || empty($_GET['quantity'])){
                     header("location: index.php");
@@ -33,7 +34,44 @@
                     $VIEW_NAME = 'search.php';
                 }
             break;
+            case 'booking':
+                if(isset($_SESSION['user'])) {
+                    require_once '../dao/room_dao.php';
+                    $id_room = $_POST['id_room'];
+                    $info = room_info($id_room);
+                    $start_date = strtotime($_POST['start_date']);
+                    $end_date = strtotime($_POST['end_date']);
+                    $day_booking = ($end_date - $start_date) / 86400;
+                    $room_image = room_image($id_room);
+                    $VIEW_NAME = 'booking.php';
+                }else{
+                    header('location: index.php?action=login');
+                }
+            break;
+            case 'comfirm':
+                if(isset($_SESSION['user'])) {
+                    require_once '../dao/room_dao.php';
+                    if(isset($_POST['comfirm_booking'])){
+                        $id_room = $_POST['room_id'];
+                        $start_date = $_POST['start_date'];
+                        $end_date = $_POST['end_date'];
+                        $name = $_POST['name'];
+                        $phone = $_POST['phone'];
+                        $total = $_POST['total'];
+                        $bank_type = $_POST['bank'];
+                        $insert_booking = room_booking($name, $phone, $total, $start_date, $end_date);
+                        insert_booking_detail($insert_booking, $id_room, $_SESSION['user']['id'], $start_date, $end_date);
+                        if($bank_type == "tructiep"){
+                            header('location: index.php?action=profile');
+                        }elseif($bank_type == "banking"){
+                            header('location: index.php?action=profile');
+                        }
+                    }
 
+                }else{
+                    header('location: index.php?action=login');
+                }
+            break;
             case 'register': 
                 if(isset($_POST['register']) && ($_POST['register'])) {
                     $name = $_POST['name'];
@@ -47,7 +85,7 @@
                 $VIEW_NAME = './user/register.php';
                 break;
             case 'login': 
-                if(isset($_POST['login']) && ($_POST['login'])) {
+                if(isset($_POST['login'])) {
                     $user = $_POST['user'];
                     $pass = $_POST['pass'];
                     $check_user=check_user($user, $pass);

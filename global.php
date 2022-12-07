@@ -1,11 +1,6 @@
 <?php
 
-function dd(){
-    echo "<pre>";
-    $args = func_get_args();
-    var_dump($args);
-    die;
-}
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 
 const BASE_URL = "";

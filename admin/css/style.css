@@ -32,6 +32,7 @@ li {
     bottom: 40px;
     right: 20px;
     cursor: pointer;
+    
 }
 
 .header {
@@ -87,6 +88,9 @@ li {
 }
 .icon-center p {
     margin-top: -40px;
+}
+.font-bold{
+    font-weight: bold;
 }
 
 /* Search history */
