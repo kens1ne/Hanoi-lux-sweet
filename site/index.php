@@ -34,6 +34,15 @@
                     $VIEW_NAME = 'search.php';
                 }
             break;
+            case 'profile':
+                if(isset($_SESSION['user'])) {
+                require_once '../dao/room_dao.php';
+                $booking = booking_history($_SESSION['user']['id']);
+                $VIEW_NAME = 'profile.php';
+            }else{
+                header('location: index.php?action=login');
+            }
+            break;
             case 'booking':
                 if(isset($_SESSION['user'])) {
                     require_once '../dao/room_dao.php';
@@ -64,7 +73,7 @@
                         if($bank_type == "tructiep"){
                             header('location: index.php?action=profile');
                         }elseif($bank_type == "banking"){
-                            header('location: index.php?action=profile');
+                            header('location: index.php?action=banking&price='.$total.'&content='.$_SESSION['user']['username'].'_'.$phone);
                         }
                     }
 
@@ -72,6 +81,9 @@
                     header('location: index.php?action=login');
                 }
             break;
+            case 'banking': 
+                $VIEW_NAME = 'banking.php';
+                break;
             case 'register': 
                 if(isset($_POST['register']) && ($_POST['register'])) {
                     $name = $_POST['name'];
