@@ -15,7 +15,6 @@ function delete_service($id)
 // hàm loadall
 function service_list()
 {        
-
     $sql="SELECT * FROM service_list";
     $listservice=pdo_query($sql);
     return $listservice;

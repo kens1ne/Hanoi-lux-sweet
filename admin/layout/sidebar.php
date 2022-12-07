@@ -3,7 +3,7 @@
      <!-- LOGO -->
      <div class="navbar-brand-box">
          <!-- Dark Logo-->
-         <a href="index.html" class="logo logo-dark">
+         <a href="index.php" class="logo logo-dark">
              <span class="logo-sm">
                  <img src="../public/admin/images/logo-sm.png" alt="" height="22">
              </span>
@@ -12,7 +12,7 @@
              </span>
          </a>
          <!-- Light Logo-->
-         <a href="index.html" class="logo logo-light">
+         <a href="index.php" class="logo logo-light">
              <span class="logo-sm">
                  <img src="../public/admin/images/logo-sm.png" alt="" height="22">
              </span>
@@ -44,32 +44,32 @@
 
 
                  <li class="nav-item">
-                     <a class="nav-link menu-link" href="widgets.html">
+                     <a class="nav-link menu-link" href="index.php?action=booking">
                          <i class="ri-folder-4-fill"></i> <span data-key="t-widgets">Quản lý đặt phòng</span>
                      </a>
                  </li>
                  <li class="nav-item">
-                     <a class="nav-link menu-link" href="widgets.html">
+                     <a class="nav-link menu-link" href="index.php?action=rooms">
                          <i class="ri-home-heart-fill"></i> <span data-key="t-widgets">Quản lý phòng</span>
                      </a>
                  </li>
                  <li class="nav-item">
-                     <a class="nav-link menu-link" href="widgets.html">
+                     <a class="nav-link menu-link" href="index.php?action=categories">
                          <i class="ri-price-tag-3-fill"></i> <span data-key="t-widgets">Quản lý danh mục</span>
                      </a>
                  </li>
                  <li class="nav-item">
-                     <a class="nav-link menu-link" href="widgets.html">
+                     <a class="nav-link menu-link" href="index.php?action=users">
                          <i class="ri-account-circle-line"></i> <span data-key="t-widgets">Quản lý người dùng</span>
                      </a>
                  </li>
                  <li class="nav-item">
-                     <a class="nav-link menu-link" href="widgets.html">
+                     <a class="nav-link menu-link" href="index.php?action=services">
                          <i class="ri-service-fill"></i> <span data-key="t-widgets">Quản lý dịch vụ</span>
                      </a>
                  </li>
                  <li class="nav-item">
-                     <a class="nav-link menu-link" href="widgets.html">
+                     <a class="nav-link menu-link" href="index.php?action=analytics">
                          <i class="ri-database-2-line"></i> <span data-key="t-widgets">Thống kê hệ thống</span>
                      </a>
                  </li>

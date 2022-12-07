@@ -4,11 +4,11 @@
             <div class="col-sm-6">
                 <script>
                 document.write(new Date().getFullYear())
-                </script> © Velzon.
+                </script> © Levart.
             </div>
             <div class="col-sm-6">
                 <div class="text-sm-end d-none d-sm-block">
-                    Design & Develop by Themesbrand
+                    Develop by Kensine
                 </div>
             </div>
         </div>
@@ -566,7 +566,6 @@
 <script src="../public/admin/libs/node-waves/waves.min.js"></script>
 <script src="../public/admin/libs/feather-icons/feather.min.js"></script>
 <script src="../public/admin/js/pages/plugins/lord-icon-2.1.0.js"></script>
-<script src="../public/admin/js/plugins.js"></script>
 
 <!--datatable js-->
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
@@ -581,9 +580,27 @@
 <script src="../public/admin/js/pages/datatables.init.js"></script>
 <!--Swiper slider js-->
 <script src="../public/admin/libs/swiper/swiper-bundle.min.js"></script>
+<script src="../public/admin/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
+<script src="../public/admin/js/plugins.js"></script>
 
-<!-- swiper.init js -->
+<!-- filepond js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+<!-- include FilePond library -->
+<script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+
+<!-- include FilePond plugins -->
+<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
+
+<!-- include FilePond jQuery adapter -->
+<script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
+<!-- init js -->
+
+<script src="../public/admin/js/pages/form-editor.init.js"></script>
 <script src="../public/admin/js/pages/swiper.init.js"></script>
+<script src="../public/admin/js/pages/form-wizard.init.js"></script>
+<script src="../public/admin/js/pages/form-file-upload.init.js"></script>
+
 <!-- App js -->
 <script src="../public/admin/js/app.js?<?=time();?>"></script>
 <script src="../public/admin/js/home.js?<?=time();?>"></script>
