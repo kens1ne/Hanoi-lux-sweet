@@ -117,6 +117,16 @@
                         </div>
                     </div>
                 </div>
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+                <script>
+                    $(document).ready(function(){
+                        $("#comment").load("../site/comment/form_comment.php", {idpro: <?=$id_room?>});
+                    });
+                </script>
+                <div class="comment" id="comment">
+                    <h1>bình luận</h1>
+                </div>
             </div>
             <div class="detail-right">
                 <div class="content-detail">
