@@ -28,14 +28,6 @@
                     <input type="date" placeholder="Nhập số phòng" name="end_date">
                 </div>
                 <div class="search-item">
-                    <span>Số người (People quantity)</span>
-                    <div class="buttons_added">
-                        <input class="minus is-form" type="button" value="-">
-                        <input class="input-qty" max="10" min="1" type="number" value="1" name="quantity">
-                        <input class="plus is-form" type="button" value="+">
-                    </div>
-                </div>
-                <div class="search-item">
                     <button type="submit">Search</button>
                 </div>
             </form>

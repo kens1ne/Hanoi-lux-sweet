@@ -76,7 +76,6 @@
                     <div class="evaluate">
                         <div class="sub-evaluate">
                             <p>Rất tốt</p>
-                            <span>193 đánh giá</span>
                         </div>
                         <div class="point">
                             <p>8,3</p>
@@ -84,7 +83,7 @@
                     </div>
                     <div class="booking-room">
                         <p class="quantity-people">2 người lớn</p>
-                        <p class="price">1.155.624 đ<span>/phòng</span></p>
+                        <p class="price"><?=number_format($value['price']);?> đ<span>/đêm</span></p>
                         <p class="booking-tax">Đã bao gồm thuế và phí</p>
                         <a
                             href="index.php?action=detail&id=<?=$value['id'];?>&start_date=<?=$_GET['start_date'];?>&end_date=<?=$_GET['end_date'];?>">Đặt
