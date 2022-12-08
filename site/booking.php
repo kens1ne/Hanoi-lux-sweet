@@ -91,11 +91,11 @@ label {
                                 <h3>Hình thức thanh toán</h3>
                                 <div class="d-flex justify-content-center">
                                     <div class="mx-4">
-                                        <input type="radio" name="bank" value="tructiep" checked="true" />
+                                        <input type="radio" name="bank" value="tructiep" id="radio1" checked="true" />
                                         <label class="radio" for="radio1">Thanh toán trực tiếp</label>
                                     </div class="mx-4">
                                     <div>
-                                        <input type="radio" name="bank" value="banking" />
+                                        <input type="radio" name="bank" value="banking" id="radio3" />
                                         <label for="radio3">Thanh toán chuyển khoản</label>
                                     </div>
                                 </div>

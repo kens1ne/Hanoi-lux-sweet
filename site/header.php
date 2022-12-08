@@ -23,6 +23,10 @@
                     <?php } else{?>
                     <li><a href="index.php?action=profile"
                             class="nav-link px-4 fs-5 "><?=$_SESSION['user']['name'];?></a></li>
+                    
+                    <li><a href="index.php?action=out"
+                    class="nav-link px-4 fs-5 ">Log out</a></li>
+                    
                     <?php } ?>
                 </ul>
             </div>
