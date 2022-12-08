@@ -45,10 +45,10 @@
             case 'booking':
                 if(isset($_SESSION['user'])) {
                     require_once '../dao/room_dao.php';
-                    $id_room = $_POST['id_room'];
+                    $id_room = $_GET['id_room'];
                     $info = room_info($id_room);
-                    $start_date = strtotime($_POST['start_date']);
-                    $end_date = strtotime($_POST['end_date']);
+                    $start_date = strtotime($_GET['start_date']);
+                    $end_date = strtotime($_GET['end_date']);
                     $day_booking = ($end_date - $start_date) / 86400;
                     $room_image = room_image($id_room);
                     $VIEW_NAME = 'booking.php';
@@ -67,7 +67,7 @@
                         $phone = $_POST['phone'];
                         $total = $_POST['total'];
                         $bank_type = $_POST['bank'];
-                        $insert_booking = room_booking($name, $phone, $total, $start_date, $end_date);
+                        $insert_booking = room_booking($name, $phone, $total);
                         insert_booking_detail($insert_booking, $id_room, $_SESSION['user']['id'], $start_date, $end_date);
                         if($bank_type == "tructiep"){
                             header('location: index.php?action=profile');
