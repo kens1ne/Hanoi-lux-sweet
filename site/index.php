@@ -18,18 +18,17 @@
                 $VIEW_NAME = 'detail.php';
             break;  
             case 'search':
-                if(empty($_GET['start_date']) || empty($_GET['end_date']) || empty($_GET['quantity'])){
+                if(empty($_GET['start_date']) || empty($_GET['end_date']) || date("Y-m-d") > $_GET['start_date']){
                     header("location: index.php");
                 }else{
                     require_once '../dao/room_dao.php';
                     $start_date = $_GET['start_date'];
                     $end_date = $_GET['end_date'];
-                    $quantity = $_GET['quantity'];
                     if(isset($_GET['location'])) {
                         $location = $_GET['location'];
-                        $rooms = room_search($start_date, $end_date, $quantity, $location);
+                        $rooms = room_search($start_date, $end_date, $location);
                     }else{
-                        $rooms = room_search($start_date, $end_date, $quantity);
+                        $rooms = room_search($start_date, $end_date);
                     }
                     $VIEW_NAME = 'search.php';
                 }
