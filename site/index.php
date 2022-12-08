@@ -83,13 +83,27 @@
             case 'banking': 
                 $VIEW_NAME = 'banking.php';
                 break;
-            case 'register': 
+            // case 'register': 
+            //     if(isset($_POST['register']) && ($_POST['register'])) {
+            //         $name = $_POST['name'];
+            //         $user = $_POST['username'];
+            //         $phone = $_POST['phone'];
+            //         $email = $_POST['email'];
+            //         $pass = $_POST['password'];
+            //         insert_user($name, $user, $phone, $email, $pass);
+            //         $thongbao = "Đăng ký thành công!";
+            //     }
+            //     $VIEW_NAME = './user/register.php';
+            //     break;
+            case 'register':
                 if(isset($_POST['register']) && ($_POST['register'])) {
                     $name = $_POST['name'];
-                    $user = $_POST['user'];
-                    $pass = $_POST['pass'];
-                    insert_user($name, $user, $pass);
-                    $thongbao = "Đăng ký thành công!";
+                    $username = $_POST['username'];
+                    $phone = $_POST['phone'];
+                    $email = $_POST['email'];
+                    $password = $_POST['password'];
+                    insert_user($name, $username, $phone, $email, $password);
+                    $thongbao = "đăng ký thành công!";
                 }
                 $VIEW_NAME = './user/register.php';
                 break;

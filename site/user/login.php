@@ -7,7 +7,7 @@
                         <form class="mb-3 mt-md-4" action="index.php?action=login" method="POST">
                             <h2 class="fw-bold mb-2 text-uppercase ">Levart Customer</h2>
                             <?php if(empty($thongbao)){?>
-                            <p class=" mb-5">Please enter your login and password!</p>
+                            <!-- <p class=" mb-5">Please enter your login and password!</p> -->
                             <?php }else{?>
                             <div class="alert alert-danger" role="alert">
                                 <strong><?=$thongbao;?></strong>
@@ -38,3 +38,4 @@
         </div>
     </div>
 </div>
+                                    
