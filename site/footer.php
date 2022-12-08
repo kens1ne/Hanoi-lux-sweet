@@ -134,7 +134,9 @@
     integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="../public/js/style.js"></script>
-
+<script>
+    AOS.init();
+</script>
 </body>
 
 </html>
