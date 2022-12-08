@@ -1,15 +1,16 @@
-<div class="vh-100 d-flex justify-content-center align-items-center">
-    <div class="container">
+<div class=" d-flex justify-content-center align-items-center">
+    <div style="margin-top: 170px; margin-bottom: 70px;" class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-12 col-md-8 col-lg-6">
                 <div class="card bg-white">
                     <div class="card-body p-5">
-                        <form class="mb-3 mt-md-4" action="index.php?action=register" method="POST">
+                    
+                        <form class="mb-3 mt-md-4" action="index.php?action=register" method="post">
                             <h2 class="fw-bold mb-2 text-uppercase ">Levart Customer</h2>
                             <?php if(empty($thongbao)){?>
-                            <p class=" mb-5">Please enter your login and password!</p>
+                            <!-- <p class=" mb-5">Please enter your login and password!</p> -->
                             <?php }else{?>
-                            <div class="alert alert-danger" role="alert">
+                            <div class="alert alert-success" role="alert">
                                 <strong><?=$thongbao;?></strong>
                             </div>
                             <?php } ?>
@@ -19,7 +20,7 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label ">Username</label>
-                                <input type="text" class="form-control" placeholder="userame" name="username">
+                                <input type="text" class="form-control" placeholder="username" name="username">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label ">Phone</label>
@@ -35,7 +36,8 @@
                                     name="password">
                             </div>
                             <div class="d-grid">
-                                <button class="btn btn-outline-dark" type="submit" name="register">Register</button>
+                                <!-- <button class="btn btn-outline-dark" type="submit" name="register">Register</button> -->
+                                <input class="btn btn-outline-dark" type="submit" name="register" value="Register">
                             </div>
                         </form>
                         <div>
@@ -50,3 +52,17 @@
         </div>
     </div>
 </div>
+<!-- 
+<div style="margin-top: 250px;" class="container">
+    <h1>đăng ký</h1>
+    <?php if (isset($thongbao) && ($thongbao != "")) echo $thongbao; ?>
+    <form action="index.php?action=register" method="post">
+        name <input type="text" name="name">
+        username<input type="text" name="username">
+        phone <input type="text" name="phone">
+        email <input type="text" name="email">
+        address <input type="text" name="address">
+        pass <input type="text" name="password">
+        <input type="submit" name="register" value="đăng ký">
+    </form>
+</div> -->

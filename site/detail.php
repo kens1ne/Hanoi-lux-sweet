@@ -132,8 +132,13 @@
                         <div class="order my-2">
                             <button type="submit" class="btn btn-danger btn-block" name="booking">Đặt ngay</button>
                         </div>
-<<<<<<< HEAD
                     </div>
+                    <div class="content-detail">
+                    <h1>Hỗ trợ khách hàng</h1>
+                    <p>Điện thoại: +84 2253 880 888</p>
+                    <p>Fax: +84 2253 880 688</p>
+                    <p>Email: <a href="">info@pearlriverhotel.vn</a></p>
+                </div>
                 </div>
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -146,20 +151,7 @@
                     <h1>bình luận</h1>
                 </div>
             </div>
-            <div class="detail-right">
-                <div class="content-detail">
-                    <img src="./acess/img/banner-ads.jpg" alt="">
-=======
-                    </form>
->>>>>>> origin/main
-                </div>
-                <div class="content-detail">
-                    <h1>Hỗ trợ khách hàng</h1>
-                    <p>Điện thoại: +84 2253 880 888</p>
-                    <p>Fax: +84 2253 880 688</p>
-                    <p>Email: <a href="">info@pearlriverhotel.vn</a></p>
-                </div>
-            </div>
+        
         </div>
     </div>
 </div>

@@ -40,9 +40,6 @@ function insert_booking_detail($id_booking, $id_room, $id_user, $start_date, $en
     VALUES ('$id_booking', '$id_room', '$id_user', '$start_date', '$end_date', 1)";
     return pdo_execute($sql);
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-// hàm thêm mới phòng vào bảng loại phòng trong databasse
 function insert_rooms($name, $price, $description,$address, $quantity_people, $status, $id_cate)
 {
     $sql = "insert into rooms(name, price, description,address, quantity_people, status, id_cate) 
@@ -78,15 +75,9 @@ function  update_rooms($id,$name, $price, $description,$address, $quantity_peopl
     $sql = "update rooms set name='" . $name . "', price='" . $price . "', description='" . $description . "', address='" . $address . "', quantity_people='" . $quantity_people . "', status='" . $status . "', id_cate='" . $id_cate . "' where id=" . $id;
 
     pdo_execute($sql);
-=======
+}
 function booking_history($id){
     $query = "SELECT * from booking_detail INNER JOIN booking ON booking.id = booking_detail.id_booking INNER JOIN rooms ON booking_detail.id_room = rooms.id WHERE booking_detail.id_user = $id";
     return pdo_query($query);
->>>>>>> origin/tannd
-=======
-function booking_history($id){
-    $query = "SELECT * from booking_detail INNER JOIN booking ON booking.id = booking_detail.id_booking INNER JOIN rooms ON booking_detail.id_room = rooms.id WHERE booking_detail.id_user = $id";
-    return pdo_query($query);
->>>>>>> origin/tannd
 }
 ?>
