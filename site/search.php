@@ -16,25 +16,14 @@
                         <p>Ngày nhận phòng</p>
                         <div class="form-control">
                             <i class="fa-solid fa-calendar-days"></i>
-                            <input type="date" name="start_date">
+                            <input type="date" name="start_date" value="<?=$_GET['start_date'];?>">
                         </div>
                     </div>
                     <div class="des">
                         <p>Ngày trả phòng</p>
                         <div class="form-control">
                             <i class="fa-solid fa-calendar-days"></i>
-                            <input type="date" name="end_date">
-                        </div>
-                    </div>
-                    <div class="amount">
-                        <div class="des">
-                            <p>Số người</p>
-                            <div class="buttons_added">
-                                <input class="minus is-form" type="button" value="-">
-                                <input aria-label="quantity" class="input-qty" max="10" min="1" name="quantity"
-                                    type="number" value="1">
-                                <input class="plus is-form" type="button" value="+">
-                            </div>
+                            <input type="date" name="end_date" value="<?=$_GET['end_date'];?>">
                         </div>
                     </div>
                     <div class="search-item">

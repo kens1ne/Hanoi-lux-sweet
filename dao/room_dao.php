@@ -36,9 +36,9 @@ function room_image($id){
     return pdo_query($query);
 }
 
-function room_booking($name, $phone, $price, $start_date, $end_date){
-    $sql = "INSERT INTO `booking`(`name_booking`, `phone`, `total_price`, `check_in`, `check_out`, `status`) 
-    VALUES ('$name', '$phone', '$price', '$start_date', '$end_date', 1)";
+function room_booking($name, $phone, $price){
+    $sql = "INSERT INTO `booking`(`name_booking`, `phone`, `total_price`) 
+    VALUES ('$name', '$phone', '$price')";
     return pdo_execute($sql);
 }
 function insert_booking_detail($id_booking, $id_room, $id_user, $start_date, $end_date){
