@@ -17,6 +17,11 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
             integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
             crossorigin="anonymous" referrerpolicy="no-referrer" />
+<<<<<<< HEAD
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+=======
+        <link rel="stylesheet" href="../aos-master/dist/aos.css">
+        <script src="../aos-master/dist/aos.js"></script>
+>>>>>>> origin/main
         <title>Levart đặt phòng khách sạn</title>
     </head>
