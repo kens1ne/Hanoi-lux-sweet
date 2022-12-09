@@ -138,17 +138,11 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="../public/js/style.js"></script>
 <script>
-<<<<<<< HEAD
 $(document).ready(function() {
     $('#table_id').DataTable();
 });
+AOS.init();
 </script>
-
-
-=======
-    AOS.init();
-</script>
->>>>>>> origin/main
 </body>
 
 </html>
