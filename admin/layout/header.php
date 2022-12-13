@@ -17,9 +17,9 @@
 
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
     <link href="../public/admin/libs/swiper/swiper-bundle.min.css" rel="stylesheet" />
-    <!-- dropzone css -->
-    <link rel="stylesheet" href="../public/admin/libs/dropzone/dropzone.css" type="text/css" />
 
+    <!-- Sweet Alert css-->
+    <link href="../public/admin/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
     <!-- Filepond css -->
     <link rel="stylesheet" href="../public/admin/libs/filepond/filepond.min.css" type="text/css" />
     <link rel="stylesheet"

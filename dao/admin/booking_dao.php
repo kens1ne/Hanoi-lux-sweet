@@ -9,7 +9,7 @@ function booking_list(){
     return pdo_query($query);
 }
 function booking_info($id_detail){
-    $query = "SELECT booking_detail.id, booking.name_booking, booking.phone, booking.email, booking.total_price, booking.date, rooms.name, booking_detail.start_date, booking_detail.end_date, booking_detail.status, GROUP_CONCAT(storage_room.image) AS image 
+    $query = "SELECT booking_detail.id, booking.name_booking, booking.phone, booking.email, booking.total_price, booking.date, rooms.name, rooms.address, booking_detail.start_date, booking_detail.end_date, booking_detail.status, GROUP_CONCAT(storage_room.image) AS images
     FROM booking_detail 
     INNER JOIN booking ON booking_detail.id_booking=booking.id 
     INNER JOIN rooms ON booking_detail.id_room=rooms.id

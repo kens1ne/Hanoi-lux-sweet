@@ -6,7 +6,7 @@ function rooms_list(){
     foreach($checkRoom as $value){
         array_push($roomHas, $value['id_room']);
     }
-    $query = "SELECT rooms.*, GROUP_CONCAT(storage_room.image) AS image FROM rooms INNER JOIN storage_room ON rooms.id = storage_room.id_room WHERE rooms.id NOT IN (".join(",",$roomHas).") GROUP BY storage_room.id_room";
+    $query = "SELECT rooms.*, GROUP_CONCAT(storage_room.image) AS image FROM rooms INNER JOIN storage_room ON rooms.id = storage_room.id_room WHERE rooms.id NOT IN (".join(",",$roomHas).") AND rooms.status = 1 GROUP BY storage_room.id_room";
     return pdo_query($query);
 }
 

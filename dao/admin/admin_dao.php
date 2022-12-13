@@ -9,3 +9,7 @@ function user_list(){
     $user = pdo_query($sql);
     return $user;
 }
+function update_user($id, $status){
+    $sql =  "UPDATE `user` SET `status`=$status WHERE `id`=$id";
+    pdo_query($sql);
+}
