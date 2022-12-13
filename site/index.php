@@ -70,7 +70,7 @@
                         $insert_booking = room_booking($name, $phone, $total);
                         insert_booking_detail($insert_booking, $id_room, $_SESSION['user']['id'], $start_date, $end_date);
                         if($bank_type == "tructiep"){
-                            header('location: index.php?action=profile');
+                            header('location: index.php?action=success');
                         }elseif($bank_type == "banking"){
                             header('location: index.php?action=banking&price='.$total.'&content='.$_SESSION['user']['username'].'_'.$phone);
                         }
@@ -79,6 +79,16 @@
                 }else{
                     header('location: index.php?action=login');
                 }
+            break;
+            case 'success':
+                $VIEW_NAME = 'success.php';
+                break;
+            case 'order':
+                require_once '../dao/room_dao.php';
+                $order = booking_history($_SESSION['user']['id']);
+                extract($order);
+                $VIEW_NAME = 'detail-order.php';
+                break;
             break;
             case 'banking': 
                 $VIEW_NAME = 'banking.php';
