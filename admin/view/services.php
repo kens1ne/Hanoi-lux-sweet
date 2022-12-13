@@ -33,8 +33,8 @@
                                 <div class="col-sm-auto">
                                     <div>
                                         <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal"
-                                            id="create-btn" data-bs-target="#showModal"><i
-                                                class="ri-add-line align-bottom me-1"></i> Add</button>
+                                            id="create-btn" data-bs-target="#addModal"><i
+                                                class="ri-add-line align-bottom me-1"></i> Thêm dịch vụ</button>
                                     </div>
                                 </div>
                             </div>
@@ -44,8 +44,8 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Tên dịch vụ</th>
-                                        <th>Giá</th>
                                         <th>Mô tả</th>
+                                        <th>Giá</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -53,16 +53,19 @@
                                     <?php foreach($serviceList as $value){?>
                                     <tr>
                                         <td><?=$value['id'];?></td>
-                                        <td><?=$value['name'];?></td>
-                                        <td><span class="badge bg-danger"><?=number_format($value['price']);?> đ</span>
-                                        </td>
+                                        <td><span class="badge bg-danger"><?=$value['name'];?></span></td>
                                         <td><?=$value['description'];?></td>
+                                        <td><?=number_format($value['price']);?> VNĐ</td>
                                         <td>
                                             <div class="btn-group" role="group" aria-label="Basic example">
-                                                <button type="button" class="btn btn-danger btn-sm">Xóa</button>
-                                                <button onclick="editCategory(<?=$value['id'];?>)"
-                                                    class="btn btn-success btn-sm" data-bs-toggle="modal"
-                                                    data-bs-target=".bs-example-modal-lg">Chỉnh sửa</button>
+                                                <button type="button" class="btn btn-danger btn-sm delete-service"
+                                                    data-id="<?=$value['id'];?>"
+                                                    data-name="<?=$value['name'];?>">Xóa</button>
+                                                <button class="btn btn-success btn-sm edit-service"
+                                                    data-bs-toggle="modal" data-bs-target="#editModal"
+                                                    data-id="<?=$value['id'];?>" data-name="<?=$value['name'];?>"
+                                                    data-description="<?=$value['description'];?>"
+                                                    data-price="<?=$value['price'];?>">Chỉnh sửa</button>
                                             </div>
                                         </td>
                                     </tr>
@@ -78,19 +81,81 @@
         </div>
     </div>
 </div>
-<!-- Vertically Centered -->
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+<!-- Add service-->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
-            <div id="approval_detail">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Thêm dịch vụ</h5>
+                <button type="button" class="btn-close" id="close-modal" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form autocomplete="off">
+                    <div class="mb-3">
+                        <label for="api-key-name" class="form-label">Tên dịch vụ <span
+                                class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="service_name" placeholder="Tập Gym">
+                    </div>
+                    <div class="mb-3">
+                        <label for="api-key-name" class="form-label">Mô tả <span class="text-danger">*</span></label>
+                        <textarea class="form-control" id="service_description" rows="10"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="api-key-name" class="form-label">Giá tiền <span class="text-danger">*</span></label>
+                        <input type="number" class="form-control" id="service_price">
+                    </div>
+                </form>
+                <div id="message"></div>
             </div>
             <div class="modal-footer">
-                <a href="javascript:void(0);" class="btn btn-link link-success fw-medium" data-bs-dismiss="modal"><i
-                        class="ri-close-line me-1 align-middle"></i> Close</a>
-                <button id="approval_comfirm" class="btn btn-danger">Save changes</button>
+                <div class="hstack gap-2 justify-content-end">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success add-service">Thêm</button>
+                </div>
             </div>
-
-        </div><!-- /.modal-content -->
+        </div>
+        <!-- modal content -->
     </div>
-</div><!-- /.modal -->
+</div>
+<!-- end modal -->
+<!-- Edit service-->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Chỉnh sửa danh mục: <span id="name_service_edit"></span>
+                </h5>
+                <button type="button" class="btn-close" id="close-modal" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form autocomplete="off">
+                    <div class="mb-3">
+                        <label class="form-label">Tên danh mục <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="service_name_edit"
+                            placeholder="Single bed room (SGL)">
+                        <input type="hidden" class="form-control" id="service_id">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Mô tả <span class="text-danger">*</span></label>
+                        <textarea class="form-control" id="service_description_edit" rows="10"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Giá tiền <span class="text-danger">*</span></label>
+                        <input type="number" class="form-control" id="service_price_edit">
+                    </div>
+                </form>
+                <div id="message_updated"></div>
+            </div>
+            <div class="modal-footer">
+                <div class="hstack gap-2 justify-content-end">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success service-comfirm-edit">Sửa</button>
+                </div>
+            </div>
+        </div>
+        <!-- modal content -->
+    </div>
+</div>
+<!-- end modal -->

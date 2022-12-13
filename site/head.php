@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
         integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../aos-master/dist/aos.css">
-    <script src="../aos-master/dist/aos.js"></script>
+    <link rel="stylesheet" href="../public/aos-master/dist/aos.css">
+    <script src="../public/aos-master/dist/aos.js"></script>
     <title>Levart đặt phòng khách sạn</title>
 </head>

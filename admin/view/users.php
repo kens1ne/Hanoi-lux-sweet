@@ -39,6 +39,7 @@
                                         <th>Email</th>
                                         <th>Phone</th>
                                         <th>Address</th>
+                                        <th>Trạng thái</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -51,13 +52,25 @@
                                         <td><?=$value['email'];?></td>
                                         <td><?=$value['phone'];?></td>
                                         <td><?=$value['address'];?></td>
-
                                         <td>
-                                            <div class="btn-group" role="group" aria-label="Basic example">
-                                                <button type="button" class="btn btn-danger btn-sm">Xóa</button>
-                                                <button onclick="editCategory(<?=$value['id'];?>)"
-                                                    class="btn btn-success btn-sm" data-bs-toggle="modal"
-                                                    data-bs-target=".bs-example-modal-lg">Chỉnh sửa</button>
+                                            <?php if($value['status'] == 1){?>
+                                            <span class="badge bg-success">ACTIVE</span>
+                                            <?php }else{?>
+                                            <span class="badge bg-danger">BANNED</span>
+                                            <?php } ?>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group" role="group">
+                                                <?php if($value['status'] == 1){?>
+                                                <button type="button" class="btn btn-danger btn-sm ban-user"
+                                                    data-id="<?=$value['id'];?>"
+                                                    data-name="<?=$value['name'];?>">Khóa</button>
+                                                <?php }else{?>
+                                                <button type="button" class="btn btn-success btn-sm restore-user"
+                                                    data-id="<?=$value['id'];?>" data-name="<?=$value['name'];?>">Khôi
+                                                    phục</button>
+                                                <?php } ?>
+
                                             </div>
                                         </td>
                                     </tr>

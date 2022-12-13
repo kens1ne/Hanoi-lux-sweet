@@ -591,15 +591,16 @@
 
 <!-- include FilePond plugins -->
 <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
-
+<!-- prismjs plugin -->
+<script src="../public/admin/libs/prismjs/prism.js"></script>
 <!-- include FilePond jQuery adapter -->
 <script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
+<!-- Sweet Alerts js -->
+<script src="../public/admin/libs/sweetalert2/sweetalert2.min.js"></script>
 <!-- init js -->
 
-<script src="../public/admin/js/pages/form-editor.init.js"></script>
 <script src="../public/admin/js/pages/swiper.init.js"></script>
 <script src="../public/admin/js/pages/form-wizard.init.js"></script>
-<script src="../public/admin/js/pages/form-file-upload.init.js"></script>
 
 <!-- App js -->
 <script src="../public/admin/js/app.js?<?=time();?>"></script>

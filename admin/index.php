@@ -32,8 +32,10 @@
             case 'rooms':
                 if(isset($_SESSION['admin'])){
                     include "../dao/admin/room_dao.php";
+                    include "../dao/admin/category_dao.php";
                     $roomList = room_list();
-                    $VIEW_NAME = 'view/room.php';
+                    $categoryList = category_list();
+                    $VIEW_NAME = 'view/rooms.php';
                     include_once 'layout/index.php';
                 }else{
                     header('Location: index.php');
@@ -56,7 +58,7 @@
                             insert_service_room($_POST['service'][$i], $insert_room);
                         }
                         $error=array();
-                        $extension=array("jpeg","jpg","png","gif");
+                        $extension=array("jpeg","jpg","png","gif","webp");
                         mkdir("../public/upload/$insert_room", 0700);
                         foreach($_FILES["images"]["tmp_name"] as $key=>$tmp_name) {
                             $file_name=$_FILES["images"]["name"][$key];
@@ -82,6 +84,67 @@
                     header('Location: index.php');
                 }
             break;
+            case 'room_info':
+                if(isset($_SESSION['admin']) && $_GET['id']){
+                    include "../dao/admin/room_dao.php";
+                    $info = room_info($_GET['id']);
+                    echo json_encode($info);
+                }else{
+                    echo json_encode(array('status' => false, 'msg' => 'Đã có lỗi xảy ra !'));
+                }
+            break;
+            case 'room_update':
+                if(isset($_SESSION['admin']) && isset($_POST['room_id']) && isset($_POST['update_room'])){
+                    include "../dao/admin/room_dao.php";
+                    $id = $_POST['room_id'];
+                    //xóa folder ảnh và dữ liệu ảnh trên dbd
+                    if(file_exists("../public/upload/$id")){
+                        delete_directory("../public/upload/$id");
+                        remove_image($id);
+                    }
+                    // lấy thông tin update
+                    $name = $_POST['room_name'];
+                    $price = $_POST['price'];
+                    $quantity = $_POST['quantity_people'];
+                    $address = $_POST['address'];
+                    $description = $_POST['description'];
+                    $category = $_POST['category'];
+                    $status = $_POST['status'];
+                    $update_room = update_room($id, $name, $price, $description, $address, $quantity, $category, $status);
+
+                    $error=array();
+                    mkdir("../public/upload/$id");
+                    $extension=array("jpeg","jpg","png","gif","webp");
+                    foreach($_FILES["images"]["tmp_name"] as $key=>$tmp_name) {
+                        $file_name=$_FILES["images"]["name"][$key];
+                        $file_tmp=$_FILES["images"]["tmp_name"][$key];
+                        $ext=pathinfo($file_name,PATHINFO_EXTENSION);
+
+                        if(in_array($ext,$extension)) {
+                            move_uploaded_file($file_tmp, "../public/upload/$id/".$file_name);
+                            insert_image($id, "../public/upload/$id/$file_name");
+                        }
+                        else {
+                            array_push($error,"$file_name, ");
+                        }
+                    }
+                    echo json_encode(array('status' => true, 'msg' => 'Cập nhật thành công phòng: '.$name));
+
+                }else{
+                    echo json_encode(array('status' => false, 'msg' => 'Đã có lỗi xảy ra !'));
+                }
+            break;
+            case 'delete_room':
+                if(isset($_SESSION['admin']) && $_POST['id_room']){
+                    include "../dao/admin/room_dao.php";
+                    $id = $_POST['id_room'];
+                    delete_room($id);
+                    echo json_encode(array('status' => true, 'msg' => 'Xóa phòng thành công !'));
+
+                }else{
+                    echo json_encode(array('status' => false, 'msg' => 'Đã có lỗi xảy ra !'));
+                } 
+            break;
             // duyệt đơn + danh sách đơn
             case 'booking':
                 if(isset($_SESSION['admin'])){
@@ -97,7 +160,6 @@
                 if(isset($_SESSION['admin'])){
                     include "../dao/admin/booking_dao.php";
                     $info = booking_info($_GET['id']);
-                    $image = explode(",", $info['image']);
                     include_once 'view/modal/approval_detail.php';
                 }else{
                     header('Location: index.php');
@@ -114,13 +176,41 @@
                     echo json_encode(array('status' => false, 'msg' => 'Đã có lỗi xảy ra !'));
                 } 
             break;
+            case 'booking_detail':
+                if(isset($_SESSION['admin'])){
+                    include "../dao/admin/booking_dao.php";
+                    $info = booking_info($_GET['id']);
+                    $images = explode(',', $info['images']);
+                    $VIEW_NAME = 'view/booking_detail.php';
+                    include_once 'layout/index.php';
+                }else{
+                    header('Location: index.php');
+                } 
+            break;
             // danh sách danh mục
             case 'categories':
                 if(isset($_SESSION['admin'])){
                     include "../dao/admin/category_dao.php";
-                    $categoryList = category_list();
-                    $VIEW_NAME = 'view/categories.php';
-                    include_once 'layout/index.php';
+                    if(isset($_POST['add_category'])){
+                        $name = $_POST['category_name'];
+                        $description = $_POST['description'];
+                        insert_cate($name, $description);
+                        echo json_encode(array('msg' => 'Thêm danh mục thành công !'));
+                    }elseif(isset($_POST['delete_category'])){
+                        $id = $_POST['id'];
+                        delete_cate($id);
+                        echo json_encode(array('status' => true, 'msg' => 'Xóa danh mục thành công !'));
+                    }elseif(isset($_POST['edit_category'])){
+                        $id = $_POST['id'];
+                        $name = $_POST['category_name'];
+                        $description = $_POST['description'];
+                        update_cate($id, $name, $description);
+                        echo json_encode(array('msg' => 'Sửa danh mục thành công !'));
+                    }else{
+                        $categoryList = category_list();
+                        $VIEW_NAME = 'view/categories.php';
+                        include_once 'layout/index.php';
+                    }
                 }else{
                     header('Location: index.php');
                 }
@@ -129,9 +219,29 @@
             case 'services':
                 if(isset($_SESSION['admin'])){
                     include "../dao/admin/service_dao.php";
-                    $serviceList = service_list();
-                    $VIEW_NAME = 'view/services.php';
-                    include_once 'layout/index.php';
+                    if(isset($_POST['add_service'])){
+                        $name = $_POST['service_name'];
+                        $description = $_POST['description'];
+                        $price = $_POST['price'];
+                        insert_service($name, $description, $price);
+                        echo json_encode(array('msg' => 'Thêm danh mục thành công !'));
+                    }elseif(isset($_POST['delete_service'])){
+                        $id = $_POST['id'];
+                        delete_service($id);
+                        delete_service_room($id);
+                        echo json_encode(array('status' => true, 'msg' => 'Xóa dịch vụ thành công !'));
+                    }elseif(isset($_POST['edit_service'])){
+                        $id = $_POST['id'];
+                        $name = $_POST['service_name'];
+                        $description = $_POST['description'];
+                        $price = $_POST['price'];
+                        update_service($id, $name, $description, $price);
+                        echo json_encode(array('msg' => 'Sửa dịch vụ thành công !'));
+                    }else{
+                        $serviceList = service_list();
+                        $VIEW_NAME = 'view/services.php';
+                        include_once 'layout/index.php';
+                    }
                 }else{
                     header('Location: index.php');
                 }
@@ -147,6 +257,15 @@
                     header('Location: index.php');
                 }
             break;
+            case 'update_user':
+                if(isset($_SESSION['admin']) && isset($_POST['id']) && isset($_POST['status'])){
+                    include "../dao/admin/admin_dao.php";
+                    update_user($_POST['id'], $_POST['status']);
+                    echo json_encode(array('status' => true, 'msg' => 'Cập nhật thành công !'));
+                }else{
+                    echo json_encode(array('status' => false, 'msg' => 'Đã có lỗi xảy ra !'));
+                }
+            break;          
             // thống kê hệ thống
             case 'analytics':
                 if(isset($_SESSION['admin'])){

@@ -74,8 +74,9 @@
 
                                         <td>
                                             <div class="btn-group" role="group" aria-label="Basic example">
-                                                <button type="button" class="btn btn-success btn-sm">Xem chi
-                                                    tiết</button>
+                                                <a href="index.php?action=booking_detail&id=<?=$value['id'];?>"
+                                                    class="btn btn-success btn-sm">Xem chi
+                                                    tiết</a>
                                                 <button onclick="approval(<?=$value['id'];?>)"
                                                     class="btn btn-primary btn-sm" data-bs-toggle="modal"
                                                     data-bs-target=".bs-example-modal-lg">Duyệt</button>
