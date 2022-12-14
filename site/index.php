@@ -46,12 +46,18 @@
                 if(isset($_SESSION['user'])) {
                     require_once '../dao/room_dao.php';
                     $id_room = $_GET['id_room'];
-                    $info = room_info($id_room);
                     $start_date = strtotime($_GET['start_date']);
                     $end_date = strtotime($_GET['end_date']);
-                    $day_booking = ($end_date - $start_date) / 86400;
-                    $room_image = room_image($id_room);
-                    $VIEW_NAME = 'booking.php';
+                    if(room_check($id_room, $_GET['start_date'], $_GET['end_date']) == true){
+                        $msg = "Phòng không khả dụng trong ngày này";
+                        header('location: index.php?action=detail&id='.$id_room.'&start_date='.$_GET['start_date'].'&end_date='.$_GET['end_date'].'&msg='.$msg); 
+                    }else{
+                        $service = service_room($id_room);
+                        $info = room_info($id_room);
+                        $day_booking = ($end_date - $start_date) / 86400;
+                        $room_image = room_image($id_room);
+                        $VIEW_NAME = 'booking.php';
+                    }
                 }else{
                     header('location: index.php?action=login');
                 }
@@ -88,7 +94,7 @@
                 $order = booking_detail($_GET['id'], $_SESSION['user']['id']);
                 $VIEW_NAME = 'detail-order.php';
                 break;
-                
+            
             case 'banking': 
                 $VIEW_NAME = 'banking.php';
                 break;
