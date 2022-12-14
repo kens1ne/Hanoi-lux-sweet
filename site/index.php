@@ -18,18 +18,17 @@
                 $VIEW_NAME = 'detail.php';
             break;  
             case 'search':
-                if(empty($_GET['start_date']) || empty($_GET['end_date']) || empty($_GET['quantity'])){
+                if(empty($_GET['start_date']) || empty($_GET['end_date']) || date("Y-m-d") > $_GET['start_date']){
                     header("location: index.php");
                 }else{
                     require_once '../dao/room_dao.php';
                     $start_date = $_GET['start_date'];
                     $end_date = $_GET['end_date'];
-                    $quantity = $_GET['quantity'];
                     if(isset($_GET['location'])) {
                         $location = $_GET['location'];
-                        $rooms = room_search($start_date, $end_date, $quantity, $location);
+                        $rooms = room_search($start_date, $end_date, $location);
                     }else{
-                        $rooms = room_search($start_date, $end_date, $quantity);
+                        $rooms = room_search($start_date, $end_date);
                     }
                     $VIEW_NAME = 'search.php';
                 }
@@ -46,10 +45,10 @@
             case 'booking':
                 if(isset($_SESSION['user'])) {
                     require_once '../dao/room_dao.php';
-                    $id_room = $_POST['id_room'];
+                    $id_room = $_GET['id_room'];
                     $info = room_info($id_room);
-                    $start_date = strtotime($_POST['start_date']);
-                    $end_date = strtotime($_POST['end_date']);
+                    $start_date = strtotime($_GET['start_date']);
+                    $end_date = strtotime($_GET['end_date']);
                     $day_booking = ($end_date - $start_date) / 86400;
                     $room_image = room_image($id_room);
                     $VIEW_NAME = 'booking.php';
@@ -68,10 +67,10 @@
                         $phone = $_POST['phone'];
                         $total = $_POST['total'];
                         $bank_type = $_POST['bank'];
-                        $insert_booking = room_booking($name, $phone, $total, $start_date, $end_date);
+                        $insert_booking = room_booking($name, $phone, $total);
                         insert_booking_detail($insert_booking, $id_room, $_SESSION['user']['id'], $start_date, $end_date);
                         if($bank_type == "tructiep"){
-                            header('location: index.php?action=profile');
+                            header('location: index.php?action=success');
                         }elseif($bank_type == "banking"){
                             header('location: index.php?action=banking&price='.$total.'&content='.$_SESSION['user']['username'].'_'.$phone);
                         }
@@ -81,16 +80,39 @@
                     header('location: index.php?action=login');
                 }
             break;
+            case 'success':
+                $VIEW_NAME = 'success.php';
+                break;
+            case 'order':
+                require_once '../dao/room_dao.php';
+                $order = booking_detail($_GET['id'], $_SESSION['user']['id']);
+                $VIEW_NAME = 'detail-order.php';
+                break;
+                
             case 'banking': 
                 $VIEW_NAME = 'banking.php';
                 break;
-            case 'register': 
+            // case 'register': 
+            //     if(isset($_POST['register']) && ($_POST['register'])) {
+            //         $name = $_POST['name'];
+            //         $user = $_POST['username'];
+            //         $phone = $_POST['phone'];
+            //         $email = $_POST['email'];
+            //         $pass = $_POST['password'];
+            //         insert_user($name, $user, $phone, $email, $pass);
+            //         $thongbao = "Đăng ký thành công!";
+            //     }
+            //     $VIEW_NAME = './user/register.php';
+            //     break;
+            case 'register':
                 if(isset($_POST['register']) && ($_POST['register'])) {
                     $name = $_POST['name'];
-                    $user = $_POST['user'];
-                    $pass = $_POST['pass'];
-                    insert_user($name, $user, $pass);
-                    $thongbao = "Đăng ký thành công!";
+                    $username = $_POST['username'];
+                    $phone = $_POST['phone'];
+                    $email = $_POST['email'];
+                    $password = $_POST['password'];
+                    insert_user($name, $username, $phone, $email, $password);
+                    $thongbao = "đăng ký thành công!";
                 }
                 $VIEW_NAME = './user/register.php';
                 break;

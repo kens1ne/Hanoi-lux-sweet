@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <style>
 /* .table-order {
     margin-top: 20px;
@@ -44,6 +45,13 @@ tr:hover {
     <table id="table_id" class="display">
     <thead>
         <tr class="first-column">
+=======
+<div class="content my-5">
+    <div class="container">
+        <table id="table_id" class="display">
+            <thead>
+                <tr class="first-column">
+>>>>>>> origin/main
                     <th>ID</th>
                     <th>Phone</th>
                     <th>Name Booking</th>
@@ -51,6 +59,7 @@ tr:hover {
                     <th>Checkin</th>
                     <th>Checkout</th>
                     <th>Total Price</th>
+<<<<<<< HEAD
                 </tr>
     <tbody class="color">
         <?php foreach( $booking as $data){  ?>
@@ -70,5 +79,28 @@ tr:hover {
 </table>
 
         </div>
+=======
+                    <th>thông tin</th>
+                </tr>
+            <tbody class="color">
+                <?php foreach( $booking as $data){  ?>
+                
+                <tr>
+                    <td><?=$data['id']?></td>
+                    <td><?=$data['phone']?></td>
+                    <td><?=$data['name_booking']?></td>
+                    <td><?=$data['name']?></td>
+                    <td><?=$data['start_date']?></td>
+                    <td><?=$data['end_date']?></td>
+                    <td><?=$data['total_price']?></td>
+                    <th><a href="index.php?action=order&id=<?=$data['id']?>">Đơn hàng</a></th>
+
+                </tr>
+                <?php }?>
+            </tbody>
+        </table>
+
+>>>>>>> origin/main
     </div>
+</div>
 </div>

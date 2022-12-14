@@ -113,7 +113,8 @@
                 <div class="content-detail">
                     <h1>Thông tin đặt phòng</h1>
                     <p><i class="fa fa-map-marker"></i> <?=$info['address'];?></p>
-                    <form action="index.php?action=booking" method="POST">
+                    <form action="index.php" method="GET">
+                        <input type="hidden" name="action" value="booking">
                         <div class="des">
                             <p>Ngày nhận phòng</p>
                             <div class="form-control">
@@ -132,7 +133,6 @@
                         <div class="order my-2">
                             <button type="submit" class="btn btn-danger btn-block" name="booking">Đặt ngay</button>
                         </div>
-                    </form>
                 </div>
                 <div class="content-detail">
                     <h1>Hỗ trợ khách hàng</h1>
@@ -141,6 +141,20 @@
                     <p>Email: <a href="">info@pearlriverhotel.vn</a></p>
                 </div>
             </div>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+            <script>
+            $(document).ready(function() {
+                $("#comment").load("../site/comment/form_comment.php", {
+                    idpro: <?=$id_room?>
+                });
+            });
+            </script>
+            <div class="comment" id="comment">
+                <h1>bình luận</h1>
+            </div>
         </div>
+
     </div>
+</div>
 </div>

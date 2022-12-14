@@ -16,25 +16,14 @@
                         <p>Ngày nhận phòng</p>
                         <div class="form-control">
                             <i class="fa-solid fa-calendar-days"></i>
-                            <input type="date" name="start_date">
+                            <input type="date" name="start_date" value="<?=$_GET['start_date'];?>">
                         </div>
                     </div>
                     <div class="des">
                         <p>Ngày trả phòng</p>
                         <div class="form-control">
                             <i class="fa-solid fa-calendar-days"></i>
-                            <input type="date" name="end_date">
-                        </div>
-                    </div>
-                    <div class="amount">
-                        <div class="des">
-                            <p>Số người</p>
-                            <div class="buttons_added">
-                                <input class="minus is-form" type="button" value="-">
-                                <input aria-label="quantity" class="input-qty" max="10" min="1" name="quantity"
-                                    type="number" value="1">
-                                <input class="plus is-form" type="button" value="+">
-                            </div>
+                            <input type="date" name="end_date" value="<?=$_GET['end_date'];?>">
                         </div>
                     </div>
                     <div class="search-item">
@@ -76,7 +65,6 @@
                     <div class="evaluate">
                         <div class="sub-evaluate">
                             <p>Rất tốt</p>
-                            <span>193 đánh giá</span>
                         </div>
                         <div class="point">
                             <p>8,3</p>
@@ -84,7 +72,7 @@
                     </div>
                     <div class="booking-room">
                         <p class="quantity-people">2 người lớn</p>
-                        <p class="price">1.155.624 đ<span>/phòng</span></p>
+                        <p class="price"><?=number_format($value['price']);?> đ<span>/đêm</span></p>
                         <p class="booking-tax">Đã bao gồm thuế và phí</p>
                         <a
                             href="index.php?action=detail&id=<?=$value['id'];?>&start_date=<?=$_GET['start_date'];?>&end_date=<?=$_GET['end_date'];?>">Đặt

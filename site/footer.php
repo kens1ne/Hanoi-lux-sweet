@@ -130,7 +130,11 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
     crossorigin="anonymous"></script>
+<<<<<<< HEAD
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+=======
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+>>>>>>> origin/main
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
@@ -138,12 +142,20 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="../public/js/style.js"></script>
 <script>
+<<<<<<< HEAD
 $(document).ready( function () {
     $('#table_id').DataTable();
 } );
 </script>
 
 
+=======
+$(document).ready(function() {
+    $('#table_id').DataTable();
+});
+AOS.init();
+</script>
+>>>>>>> origin/main
 </body>
 
 </html>

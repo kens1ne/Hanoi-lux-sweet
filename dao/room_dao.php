@@ -1,10 +1,10 @@
 <?php
 function rooms_list(){
-    $query = "SELECT rooms.*, GROUP_CONCAT(storage_room.image) AS image FROM rooms INNER JOIN storage_room ON rooms.id = storage_room.id_room GROUP BY storage_room.id_room";
+    $query = "SELECT rooms.*, GROUP_CONCAT(storage_room.image) AS image FROM rooms INNER JOIN storage_room ON rooms.id = storage_room.id_room WHERE rooms.status = 1 GROUP BY storage_room.id_room";
     return pdo_query($query);
 }
 
-function room_search($start, $end, $quantity, $location = null){
+function room_search($start, $end, $location = null){
     $sqlCheckRoom = "SELECT id_room FROM booking_detail WHERE start_date <= '$start' AND end_date >= '$end' OR start_date >= '$start' AND end_date <= '$end'";
     $checkRoom = pdo_query($sqlCheckRoom);
     $roomHas = [0];
@@ -12,9 +12,9 @@ function room_search($start, $end, $quantity, $location = null){
         array_push($roomHas, $value['id_room']);
     }
     if(empty($location)){
-        $room = "SELECT rooms.*, GROUP_CONCAT(storage_room.image) AS image FROM rooms INNER JOIN storage_room ON rooms.id = storage_room.id_room WHERE rooms.id NOT IN (".join(",",$roomHas).") AND rooms.quantity_people >= $quantity GROUP BY storage_room.id_room";
+        $room = "SELECT rooms.*, GROUP_CONCAT(storage_room.image) AS image FROM rooms INNER JOIN storage_room ON rooms.id = storage_room.id_room WHERE rooms.id NOT IN (".join(",",$roomHas).") GROUP BY storage_room.id_room";
     }else{
-        $room = "SELECT rooms.*, GROUP_CONCAT(storage_room.image) AS image FROM rooms INNER JOIN storage_room ON rooms.id = storage_room.id_room WHERE rooms.id NOT IN (".join(",",$roomHas).") AND rooms.quantity_people >= $quantity AND rooms.address LIKE '%$location%' GROUP BY storage_room.id_room";    
+        $room = "SELECT rooms.*, GROUP_CONCAT(storage_room.image) AS image FROM rooms INNER JOIN storage_room ON rooms.id = storage_room.id_room WHERE rooms.id NOT IN (".join(",",$roomHas).") AND rooms.address LIKE '%$location%' GROUP BY storage_room.id_room";    
     }
     return pdo_query($room);
 }
@@ -30,18 +30,65 @@ function room_image($id){
     return pdo_query($query);
 }
 
-function room_booking($name, $phone, $price, $start_date, $end_date){
-    $sql = "INSERT INTO `booking`(`name_booking`, `phone`, `total_price`, `check_in`, `check_out`, `status`) 
-    VALUES ('$name', '$phone', '$price', '$start_date', '$end_date', 1)";
+function room_booking($name, $phone, $price){
+    $sql = "INSERT INTO `booking`(`name_booking`, `phone`, `total_price`) 
+    VALUES ('$name', '$phone', '$price')";
     return pdo_execute($sql);
 }
 function insert_booking_detail($id_booking, $id_room, $id_user, $start_date, $end_date){
     $sql = "INSERT INTO `booking_detail`(`id_booking`, `id_room`, `id_user`, `start_date`, `end_date`, `status`) 
-    VALUES ('$id_booking', '$id_room', '$id_user', '$start_date', '$end_date', 1)";
+    VALUES ('$id_booking', '$id_room', '$id_user', '$start_date', '$end_date', 0)";
     return pdo_execute($sql);
 }
+function insert_rooms($name, $price, $description,$address, $quantity_people, $status, $id_cate)
+{
+    $sql = "insert into rooms(name, price, description,address, quantity_people, status, id_cate) 
+    value('$name', '$price', '$description','$address', '$quantity_people', '$status', '$id_cate')";
+    pdo_execute($sql);
+}
+// hàm xóa 
+function delete_rooms($id)
+{
+    $sql = "delete from rooms where id=" . $id;
+    pdo_execute($sql);
+}
+// hàm loadall
+function loadAll_rooms($id= 0)
+{        
+    $sql = "select * from rooms where 1";
+    if ($id > 0) {
+        $sql .= " and id='" . $id. "'";
+    }
+    $listrooms = pdo_query($sql);
+    return $listrooms;
+}
+// hàm load một sản phẩm trong danh sách phòng trong database
+function loadOne_rooms($id)
+{
+    $sql = "select * from rooms where id=" . $id;
+    $room = pdo_query_one($sql);
+    return $room;
+}
+// hàm update một sản phẩm trong danh sách hàng hóa trong database
+function  update_rooms($id,$name, $price, $description,$address, $quantity_people, $status, $id_cate)
+{    
+    $sql = "update rooms set name='" . $name . "', price='" . $price . "', description='" . $description . "', address='" . $address . "', quantity_people='" . $quantity_people . "', status='" . $status . "', id_cate='" . $id_cate . "' where id=" . $id;
+
+    pdo_execute($sql);
+}
 function booking_history($id){
-    $query = "SELECT * from booking_detail INNER JOIN booking ON booking.id = booking_detail.id_booking INNER JOIN rooms ON booking_detail.id_room = rooms.id WHERE booking_detail.id_user = $id";
+    $query = "SELECT booking_detail.id, booking.name_booking, booking.phone, rooms.name, booking_detail.start_date, booking_detail.end_date, booking.total_price from booking_detail INNER JOIN booking ON booking.id = booking_detail.id_booking INNER JOIN rooms ON booking_detail.id_room = rooms.id WHERE booking_detail.id_user = $id";
     return pdo_query($query);
+}
+function booking_detail($id_detail, $id_user){
+    $query = "SELECT booking_detail.id, booking.name_booking, booking.phone, booking.email, booking.total_price, booking.date, rooms.name, rooms.address, rooms.price, booking_detail.start_date, booking_detail.end_date, booking_detail.status, GROUP_CONCAT(storage_room.image) AS images
+    FROM booking_detail 
+    INNER JOIN booking ON booking_detail.id_booking=booking.id 
+    INNER JOIN rooms ON booking_detail.id_room=rooms.id
+    INNER JOIN storage_room ON storage_room.id_room = booking_detail.id_room
+    WHERE booking_detail.id=$id_detail and booking_detail.id_user = $id_user
+    GROUP BY storage_room.id_room
+    ";
+    return pdo_query_one($query);
 }
 ?>
