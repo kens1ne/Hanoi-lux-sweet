@@ -85,11 +85,10 @@
                 break;
             case 'order':
                 require_once '../dao/room_dao.php';
-                $order = booking_history($_SESSION['user']['id']);
-                extract($order);
+                $order = booking_detail($_GET['id'], $_SESSION['user']['id']);
                 $VIEW_NAME = 'detail-order.php';
                 break;
-            break;
+                
             case 'banking': 
                 $VIEW_NAME = 'banking.php';
                 break;

@@ -47,7 +47,7 @@ label {
                             <div class="col-6">
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Trả phòng</label>
-                                    <input type="disabled" class="form-control" value="<?=$_GET['start_date'];?>"
+                                    <input type="disabled" class="form-control" value="<?=$_GET['end_date'];?>"
                                         name="end_date" readonly>
                                 </div>
                             </div>

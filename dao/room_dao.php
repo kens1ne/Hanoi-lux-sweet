@@ -1,12 +1,6 @@
 <?php
 function rooms_list(){
-    $sqlCheckRoom = "SELECT id_room FROM booking_detail WHERE end_date > '".date("Y-m-d")."'";
-    $checkRoom = pdo_query($sqlCheckRoom);
-    $roomHas = [0];
-    foreach($checkRoom as $value){
-        array_push($roomHas, $value['id_room']);
-    }
-    $query = "SELECT rooms.*, GROUP_CONCAT(storage_room.image) AS image FROM rooms INNER JOIN storage_room ON rooms.id = storage_room.id_room WHERE rooms.id NOT IN (".join(",",$roomHas).") AND rooms.status = 1 GROUP BY storage_room.id_room";
+    $query = "SELECT rooms.*, GROUP_CONCAT(storage_room.image) AS image FROM rooms INNER JOIN storage_room ON rooms.id = storage_room.id_room WHERE rooms.status = 1 GROUP BY storage_room.id_room";
     return pdo_query($query);
 }
 
@@ -83,7 +77,18 @@ function  update_rooms($id,$name, $price, $description,$address, $quantity_peopl
     pdo_execute($sql);
 }
 function booking_history($id){
-    $query = "SELECT * from booking_detail INNER JOIN booking ON booking.id = booking_detail.id_booking INNER JOIN rooms ON booking_detail.id_room = rooms.id WHERE booking_detail.id_user = $id";
+    $query = "SELECT booking_detail.id, booking.name_booking, booking.phone, rooms.name, booking_detail.start_date, booking_detail.end_date, booking.total_price from booking_detail INNER JOIN booking ON booking.id = booking_detail.id_booking INNER JOIN rooms ON booking_detail.id_room = rooms.id WHERE booking_detail.id_user = $id";
     return pdo_query($query);
+}
+function booking_detail($id_detail, $id_user){
+    $query = "SELECT booking_detail.id, booking.name_booking, booking.phone, booking.email, booking.total_price, booking.date, rooms.name, rooms.address, rooms.price, booking_detail.start_date, booking_detail.end_date, booking_detail.status, GROUP_CONCAT(storage_room.image) AS images
+    FROM booking_detail 
+    INNER JOIN booking ON booking_detail.id_booking=booking.id 
+    INNER JOIN rooms ON booking_detail.id_room=rooms.id
+    INNER JOIN storage_room ON storage_room.id_room = booking_detail.id_room
+    WHERE booking_detail.id=$id_detail and booking_detail.id_user = $id_user
+    GROUP BY storage_room.id_room
+    ";
+    return pdo_query_one($query);
 }
 ?>
