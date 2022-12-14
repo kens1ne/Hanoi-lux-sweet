@@ -396,7 +396,7 @@ input:checked~img {
     height: 50px;
     width: 1.5px;
     background-color: #c19b76;
-    transform: translate(528px, 0);
+    transform: translate(560px, 0);
     margin-top: -45px;
 }
 

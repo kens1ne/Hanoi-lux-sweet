@@ -11,4 +11,10 @@ function load_room() {
     $listrooms = pdo_query($sql);
     return $listrooms;
 }
+
+function load_sum() {
+    $sql = "select sum(total_price) as sum from booking";
+    $listsum = pdo_query($sql);
+    return $listsum;
+}
 ?>
