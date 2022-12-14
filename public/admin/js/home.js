@@ -585,4 +585,25 @@ $(document).ready(function () {
                 });
         });
     });
+    var donutChartCanvas = $('#doughnut').get(0).getContext('2d');
+    var donutData = {
+        labels: [1, 2, 3, 4],
+        datasets: [
+            {
+                data: [1, 2, 3, 4],
+                backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+            },
+        ],
+    };
+    var donutOptions = {
+        maintainAspectRatio: false,
+        responsive: true,
+    };
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    new Chart(donutChartCanvas, {
+        type: 'doughnut',
+        data: donutData,
+        options: donutOptions,
+    });
 });

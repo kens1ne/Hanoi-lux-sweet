@@ -566,7 +566,8 @@
 <script src="../public/admin/libs/node-waves/waves.min.js"></script>
 <script src="../public/admin/libs/feather-icons/feather.min.js"></script>
 <script src="../public/admin/js/pages/plugins/lord-icon-2.1.0.js"></script>
-
+<!-- apexcharts -->
+<script src="../public/admin/libs/chart.js/chart.min.js"></script>
 <!--datatable js-->
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>

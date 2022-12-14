@@ -270,8 +270,7 @@
             case 'analytics':
                 if(isset($_SESSION['admin'])){
                     include "../dao/admin/admin_dao.php";
-                    $userList = user_list();
-                    $VIEW_NAME = 'view/users.php';
+                    $VIEW_NAME = 'view/analytics.php';
                     include_once 'layout/index.php';
                 }else{
                     header('Location: index.php');
