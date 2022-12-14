@@ -129,6 +129,9 @@
                                 <input type="date" name="end_date" value="<?=$_GET['end_date'];?>">
                             </div>
                         </div>
+                        <?php if(isset($_GET['msg'])){?>
+                            <p class="text-danger"><?=$_GET['msg'];?></p>
+                        <?php } ?>
                         <input type="hidden" name="id_room" value="<?=$info['id'];?>">
                         <div class="order my-2">
                             <button type="submit" class="btn btn-danger btn-block" name="booking">Đặt ngay</button>
