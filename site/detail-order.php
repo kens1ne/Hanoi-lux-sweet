@@ -58,7 +58,7 @@
         <span style="color: red;font-weight: bold;"><?=$order['total_price']?> VNĐ</span>
     </div>
 
-    <div class="inf-order">
+    <div style="height: 25px;" class="inf-order">
         <p>Trạng thái: </p>
         <?php if($order['status'] == 0){?>
         <span class="badge bg-info">Chờ duyệt</span>

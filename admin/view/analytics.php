@@ -31,8 +31,11 @@
                                         <div class="d-flex justify-content-between">
                                             <div>
                                                 <p class="fw-medium text-muted mb-0">Users</p>
-                                                <h2 class="mt-4 ff-secondary fw-semibold"><span class="counter-value"
-                                                        data-target="28.05">0</span>k</h2>
+                                                <?php foreach ($listuser as $thongke) {
+                                                    extract($thongke);
+                                                ?>
+                                                    <h2><?= $tong ?></h2>
+                                                <?php } ?>
                                                 <p class="mb-0 text-muted"><span
                                                         class="badge bg-light text-success mb-0"> <i
                                                             class="ri-arrow-up-line align-middle"></i> 16.24 % </span>
@@ -55,9 +58,12 @@
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between">
                                             <div>
-                                                <p class="fw-medium text-muted mb-0">Sessions</p>
-                                                <h2 class="mt-4 ff-secondary fw-semibold"><span class="counter-value"
-                                                        data-target="97.66">0</span>k</h2>
+                                                <p class="fw-medium text-muted mb-0">Product</p>
+                                                <?php foreach ($listrooms as $rooms) {
+                                                    extract($rooms);
+                                                ?>
+                                                    <h2 ><?= $room ?></h2>
+                                                <?php } ?>
                                                 <p class="mb-0 text-muted"><span
                                                         class="badge bg-light text-danger mb-0"> <i
                                                             class="ri-arrow-down-line align-middle"></i> 3.96 % </span>
@@ -131,18 +137,7 @@
                         </div> <!-- end row-->
                     </div>
                 </div> <!-- end col-->
-                <div class="col-xl-4">
-                    <div class="card card-height-100">
-                        <div class="card-header align-items-center d-flex">
-                            <h4 class="card-title mb-0 flex-grow-1">Thống kê phòng</h4>
-                        </div><!-- end card header -->
-                        <div class="card-body">
-                            <canvas id="doughnut" class="chartjs-chart"
-                                data-colors='["--vz-primary", "--vz-light"]'></canvas>
-
-                        </div><!-- end card body -->
-                    </div><!-- end card -->
-                </div><!-- end col -->
+         
             </div>
             <!-- container-fluid -->
         </div>

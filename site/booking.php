@@ -51,6 +51,15 @@ label {
                                         name="end_date" readonly>
                                 </div>
                             </div>
+                            <!-- <div class="col-12"> 
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Dịch vụ</label>
+                                    <?php
+                                        foreach ($service as $service) { ?>
+                                            <input type="disabled" class="form-control" value="<?=$service['name'];?>">
+                                    <?php }?>
+                                </div>
+                            </div>-->
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Địa điểm</label>

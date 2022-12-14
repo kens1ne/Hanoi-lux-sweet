@@ -3,7 +3,19 @@ function rooms_list(){
     $query = "SELECT rooms.*, GROUP_CONCAT(storage_room.image) AS image FROM rooms INNER JOIN storage_room ON rooms.id = storage_room.id_room WHERE rooms.status = 1 GROUP BY storage_room.id_room";
     return pdo_query($query);
 }
-
+function service_room($id) {
+    $query = "SELECT service_list.name FROM service inner join service_list on service.id_service=service_list.id where service.id_room=$id";
+    return pdo_query($query);
+}
+function room_check($id, $start, $end){
+    $sqlCheckRoom = "SELECT id_room FROM booking_detail WHERE start_date <= '$start' AND end_date >= '$end' OR start_date >= '$start' AND end_date <= '$end'";
+    $checkRoom = pdo_query($sqlCheckRoom);
+    $roomHas = [0];
+    foreach($checkRoom as $value){
+        array_push($roomHas, $value['id_room']);
+    }
+    return in_array($id, $roomHas);
+}
 function room_search($start, $end, $location = null){
     $sqlCheckRoom = "SELECT id_room FROM booking_detail WHERE start_date <= '$start' AND end_date >= '$end' OR start_date >= '$start' AND end_date <= '$end'";
     $checkRoom = pdo_query($sqlCheckRoom);
