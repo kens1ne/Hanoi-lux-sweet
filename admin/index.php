@@ -265,16 +265,14 @@
                 }else{
                     echo json_encode(array('status' => false, 'msg' => 'Đã có lỗi xảy ra !'));
                 }
-            break;          
+            break; 
             // thống kê hệ thống
             case 'analytics':
-                if(isset($_SESSION['admin'])){
-                    include "../dao/admin/admin_dao.php";
+                    include "../dao/admin/statistical.php";
+                    $listuser = load_user();
+                    $listrooms = load_room();
                     $VIEW_NAME = 'view/analytics.php';
                     include_once 'layout/index.php';
-                }else{
-                    header('Location: index.php');
-                }
             break;
         }
     }

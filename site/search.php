@@ -45,12 +45,12 @@
                 <div class="room-inf">
                     <div class="list-star room-star">
                         <h3><?=$value['name'];?></h3>
+                        <!-- <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-thumbs-up"></i>
+                        <i class="fa-solid fa-thumbs-up"></i> -->
                     </div>
                     <div class="room-location">
                         <p><?=$value['address'];?></p>
@@ -64,14 +64,14 @@
                 <div class="room-price">
                     <div class="evaluate">
                         <div class="sub-evaluate">
-                            <p>Rất tốt</p>
+                            <!-- <p>Rất tốt</p> -->
                         </div>
-                        <div class="point">
+                        <!-- <div class="point">
                             <p>8,3</p>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="booking-room">
-                        <p class="quantity-people">2 người lớn</p>
+                        <!-- <p class="quantity-people">2 người lớn</p> -->
                         <p class="price"><?=number_format($value['price']);?> đ<span>/đêm</span></p>
                         <p class="booking-tax">Đã bao gồm thuế và phí</p>
                         <a
