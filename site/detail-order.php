@@ -9,6 +9,7 @@
         margin: 0 auto;
         padding: 35px 50px;
         background-color: #fff;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     }
     .detail-order h5 {
         text-align: center;
@@ -21,6 +22,7 @@
 </style>
 <div class="main-order">
 <div class="detail-order">
+    <button type="" class="btn btn-danger btn-block" name=""><a style="text-decoration: none; color: #fff;" href="index.php?action=profile">Quay lại</a></button>
     <h5 style="font-weight: bold;">Thông tin hóa đơn khách sạn Levart</h5>
 
     <div class="inf-order">
@@ -51,11 +53,11 @@
     </div>
     <div class="inf-order">
         <p>Giá phòng theo ngày: </p>
-        <span><?=$order['price']?> VNĐ</span>
+        <span><?=number_format($order['price'])?> VNĐ</span>
     </div>
     <div class="inf-order">
         <p>Tổng số tiền cần thanh toán: </p>
-        <span style="color: red;font-weight: bold;"><?=$order['total_price']?> VNĐ</span>
+        <span style="color: red;font-weight: bold;"><?=number_format($order['total_price'])?> VNĐ</span>
     </div>
 
     <div style="height: 25px;" class="inf-order">

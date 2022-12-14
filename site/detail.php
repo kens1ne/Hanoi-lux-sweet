@@ -3,11 +3,11 @@
         <div class="title-detail">
             <div class="sub-title">
                 <span>Căn hộ</span>
-                <h1><?=$info['name'];?></h1>
+                <h1 data-aos="fade-up" data-aos-duration="1500"><?=$info['name'];?></h1>
             </div>
             <div class="price-detail">
-                <span>Giá bắt đầu từ:</span>
-                <p><?=number_format($info['price'])?> ₫ <span>mỗi đêm</span></p>
+                <span data-aos="fade-up" data-aos-duration="1500">Giá bắt đầu từ:</span>
+                <p data-aos="fade-up" data-aos-duration="1500"><?=number_format($info['price'])?> ₫ <span>mỗi đêm</span></p>
             </div>
         </div>
         <div class="row my-4">
@@ -111,19 +111,19 @@
                     <img src="../public/img/banner-ads.jpg" alt="" class="w-full">
                 </div>
                 <div class="content-detail">
-                    <h1>Thông tin đặt phòng</h1>
-                    <p><i class="fa fa-map-marker"></i> <?=$info['address'];?></p>
+                    <h1 data-aos="fade-up" data-aos-duration="1500">Thông tin đặt phòng</h1>
+                    <p data-aos="fade-up" data-aos-duration="1500"><i class="fa fa-map-marker"></i> <?=$info['address'];?></p>
                     <form action="index.php" method="GET">
                         <input type="hidden" name="action" value="booking">
                         <div class="des">
-                            <p>Ngày nhận phòng</p>
+                            <p data-aos="fade-up" data-aos-duration="1500">Ngày nhận phòng</p>
                             <div class="form-control">
                                 <i class="fa-solid fa-calendar-days"></i>
                                 <input type="date" name="start_date" value="<?=$_GET['start_date'];?>">
                             </div>
                         </div>
                         <div class="des">
-                            <p>Ngày trả phòng</p>
+                            <p data-aos="fade-up" data-aos-duration="1500">Ngày trả phòng</p>
                             <div class="form-control">
                                 <i class="fa-solid fa-calendar-days"></i>
                                 <input type="date" name="end_date" value="<?=$_GET['end_date'];?>">
@@ -138,10 +138,10 @@
                         </div>
                 </div>
                 <div class="content-detail">
-                    <h1>Hỗ trợ khách hàng</h1>
-                    <p>Điện thoại: +84 2253 880 888</p>
-                    <p>Fax: +84 2253 880 688</p>
-                    <p>Email: <a href="">info@pearlriverhotel.vn</a></p>
+                    <h1 data-aos="fade-up" data-aos-duration="1500">Hỗ trợ khách hàng</h1>
+                    <p data-aos="fade-up" data-aos-duration="1500">Điện thoại: +84 2253 880 888</p>
+                    <p data-aos="fade-up" data-aos-duration="1500">Fax: +84 2253 880 688</p>
+                    <p data-aos="fade-up" data-aos-duration="1500">Email: <a href="">info@pearlriverhotel.vn</a></p>
                 </div>
             </div>
 

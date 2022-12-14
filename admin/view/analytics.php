@@ -30,7 +30,7 @@
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between">
                                             <div>
-                                                <p class="fw-medium text-muted mb-0">Users</p>
+                                                <p class="fw-medium text-muted mb-0">Số người dùng</p>
                                                 <?php foreach ($listuser as $thongke) {
                                                     extract($thongke);
                                                 ?>
@@ -58,7 +58,7 @@
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between">
                                             <div>
-                                                <p class="fw-medium text-muted mb-0">Product</p>
+                                                <p class="fw-medium text-muted mb-0">Số phòng</p>
                                                 <?php foreach ($listrooms as $rooms) {
                                                     extract($rooms);
                                                 ?>
@@ -88,15 +88,16 @@
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between">
                                             <div>
-                                                <p class="fw-medium text-muted mb-0">Avg. Visit Duration</p>
-                                                <h2 class="mt-4 ff-secondary fw-semibold"><span class="counter-value"
-                                                        data-target="3">0</span>m
-                                                    <span class="counter-value" data-target="40">0</span>sec
-                                                </h2>
-                                                <p class="mb-0 text-muted"><span
+                                                <p class="fw-medium text-muted mb-0">Tổng doanh thu</p>
+                                                <?php foreach ($listsum as $sum) {
+                                                    extract($sum);
+                                                ?>
+                                                    <h2 ><?= number_format($sum) ?> VNĐ</h2>
+                                                <?php } ?>
+                                                <!-- <p class="mb-0 text-muted"><span
                                                         class="badge bg-light text-danger mb-0"> <i
                                                             class="ri-arrow-down-line align-middle"></i> 0.24 % </span>
-                                                    vs. previous month</p>
+                                                    vs. previous month</p> -->
                                             </div>
                                             <div>
                                                 <div class="avatar-sm flex-shrink-0">
@@ -110,7 +111,7 @@
                                 </div> <!-- end card-->
                             </div> <!-- end col-->
 
-                            <div class="col-md-6">
+                            <!-- <div class="col-md-6">
                                 <div class="card card-animate">
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between">
@@ -133,7 +134,7 @@
                                         </div>
                                     </div><!-- end card body -->
                                 </div> <!-- end card-->
-                            </div> <!-- end col-->
+                            </div> 
                         </div> <!-- end row-->
                     </div>
                 </div> <!-- end col-->

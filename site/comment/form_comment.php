@@ -58,7 +58,7 @@
     .all-comment .send {
         /* display: block; */
         margin-left: 85%;
-        background-color: #4267b2;
+        background-color: #c19b76;
         color: #fff;
         font-weight: 600;
         font-family: sans-serif;
@@ -88,6 +88,21 @@
         color: #004eff;
         transform: scale(1.2);
     }
+    .from-cmt{
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        background-color: #f2f3f5;
+        border-radius: 15px;
+        padding: 10px;
+        width: 25%;
+    }
+    .from-img img{
+        border-radius: 50%;
+        margin-right: 15px;
+    }
+    .from-main {
+        display: flex;
+        padding: 10px 0;
+    }
 </style>
 <body>
     <div class="comment">
@@ -97,11 +112,23 @@
                     <?php
                         foreach ($dsbl as $bl) {
                             extract($bl);
-                            echo '<h3>'.$username.'</h3>';
-                            echo '<p>'.$noidung.'</p>';
-                            echo '<span><button class="like" id="likebtn"><i class="heart fa fa-thumbs-up"></i></button><input type="number" id="input1" value="0" name=""></span> '.$ngaybinhluan.'</input></tr>';
-                        }
 
+                            echo '
+                            <div class="from-main">
+                                <div class="from-img">
+                                <img width="40" src="https://fullstack.edu.vn/static/media/fallback-avatar.155cdb2376c5d99ea151.jpg" alt="">
+                                </div>
+                            
+                                <div class="from-cmt">
+                                    <h3>'.$username.'</h3>
+                                    <p>'.$noidung.'</p>
+                                    <span><button class="like" id="likebtn"><i class="heart fa fa-thumbs-up"></i></button><input type="number" id="input1" value="0" name="">'.$ngaybinhluan.'</span>
+                                </div>
+                            </div>';
+                            // echo '<h3>'.$username.'</h3>';
+                            // echo '<p>'.$noidung.'</p>';
+                            // echo '<span><button class="like" id="likebtn"><i class="heart fa fa-thumbs-up"></i></button><input type="number" id="input1" value="0" name="">'.$ngaybinhluan.'</span> </input></tr>';
+                        }
                     ?>
             </div>
         </div>

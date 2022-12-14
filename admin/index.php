@@ -271,6 +271,7 @@
                     include "../dao/admin/statistical.php";
                     $listuser = load_user();
                     $listrooms = load_room();
+                    $listsum = load_sum();
                     $VIEW_NAME = 'view/analytics.php';
                     include_once 'layout/index.php';
             break;

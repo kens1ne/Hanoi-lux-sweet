@@ -64,13 +64,13 @@
                             ?>
                         </div>
                         <!-- <div class="point">9</div> -->
-                        <h3 class="product-title"><?=$data['name']?></h3>
+                        <h3 data-aos="fade-up" data-aos-duration="1500" class="product-title"><?=$data['name']?></h3>
                         <div class="star">
-                            <div class="location"><?=$data['address']?>
+                            <div data-aos="fade-up" data-aos-duration="1500" class="location"><?=$data['address']?>
                             </div>
                         </div>
                         <div class="option-room">
-                            <p class="price">
+                            <p class="price" data-aos="fade-up" data-aos-duration="1500">
                                 <?=number_format($data['price'])?> VNĐ<span> / đêm</span></p>
                         </div>
                     </div>
