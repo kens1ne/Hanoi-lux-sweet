@@ -10,10 +10,11 @@
                     <th>Checkin</th>
                     <th>Checkout</th>
                     <th>Total Price</th>
+                    <th>thông tin</th>
                 </tr>
             <tbody class="color">
                 <?php foreach( $booking as $data){  ?>
-
+                
                 <tr>
                     <td><?=$data['id']?></td>
                     <td><?=$data['phone']?></td>
@@ -22,6 +23,7 @@
                     <td><?=$data['start_date']?></td>
                     <td><?=$data['end_date']?></td>
                     <td><?=$data['total_price']?></td>
+                    <th><a href="index.php?action=order&id=<?=$data['id']?>">Đơn hàng</a></th>
 
                 </tr>
                 <?php }?>

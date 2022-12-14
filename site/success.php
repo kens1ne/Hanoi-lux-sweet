@@ -33,7 +33,7 @@
     <span>Cảm ơn quý khách đã tin tưởng và đồng hành với Levart. Chúc quý khách có một trải nghiệm tuyệt vời</span>
     <div class="btn-order">
     <button type="submit" class="btn btn-danger btn-block" name=""><a href="index.php">Trang chủ</a></button>
-    <button type="submit" class="btn btn-success btn-block" name=""><a href="index.php?action=order">Đơn hàng</a></button>
+    <button type="submit" class="btn btn-success btn-block" name=""><a href="index.php?action=profile">Đơn hàng</a></button>
     </div>
 </div>
 </div>
