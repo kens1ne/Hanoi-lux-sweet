@@ -65,6 +65,10 @@
                                                 <button type="button" class="btn btn-danger btn-sm ban-user"
                                                     data-id="<?=$value['id'];?>"
                                                     data-name="<?=$value['name'];?>">Khóa</button>
+                                                <button type="button" class="btn btn-warning btn-sm change-password"
+                                                    data-id="<?=$value['id'];?>" data-name="<?=$value['name'];?>">Đổi
+                                                    mật khẩu</button>
+
                                                 <?php }else{?>
                                                 <button type="button" class="btn btn-success btn-sm restore-user"
                                                     data-id="<?=$value['id'];?>" data-name="<?=$value['name'];?>">Khôi
